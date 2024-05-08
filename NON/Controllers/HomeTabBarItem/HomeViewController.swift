@@ -110,9 +110,9 @@ class HomeViewController: UIViewController {
 //        logo.widthAnchor.constraint(equalToConstant: 250).isActive = true
 //        logo.heightAnchor.constraint(equalToConstant: 140).isActive = true
 
-        shoppingButton = ButtonWithShadow(title: "Shopping", width: 250, height: 70, controller: self, goToIdentifier: "ShoppingViewController")
-        bookingButton = ButtonWithShadow(title: "Make a booking", width: 250, height: 70, controller: self, goToIdentifier: "MakeABookingViewController")
-        voucherButton = ButtonWithShadow(title: "Buy a Gift Voucher", width: 250, height: 70, controller: self, goToIdentifier: "GiftVoucherViewController")
+        shoppingButton = ButtonWithShadow(title: "Shopping", width: 250, height: 70, goToIdentifier: "ShoppingViewController")
+        bookingButton = ButtonWithShadow(title: "Make a booking", width: 250, height: 70, goToIdentifier: "MakeABookingViewController")
+        voucherButton = ButtonWithShadow(title: "Buy a Gift Voucher", width: 250, height: 70, goToIdentifier: "GiftVoucherViewController")
         arrangeButtons(array: [shoppingButton,bookingButton,voucherButton])
 
     }

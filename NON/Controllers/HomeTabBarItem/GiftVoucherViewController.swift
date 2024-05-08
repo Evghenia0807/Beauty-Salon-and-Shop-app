@@ -50,7 +50,7 @@ class GiftVoucherViewController: LogoViewController {
     
     
     private func buyButtonSetup(){
-        buyButton = ButtonWithShadow(title: "Purchase", width: 200, height: 80, controller: self, goToIdentifier: HomeViewController.identifier)
+        buyButton = ButtonWithShadow(title: "Purchase", width: 200, height: 80,  goToIdentifier: HomeViewController.identifier)
         view.addSubview(buyButton)
         buyButton.alpha = 0.4
         buyButton.translatesAutoresizingMaskIntoConstraints = false

@@ -9,29 +9,33 @@ import UIKit
 
 class ButtonWithShadow: UIView {
 
-
+    var title: String
+    var width: Int
+    var height: Int
+    var goToIdentifier: String?
+    var titleSize: CGFloat?
+    
     let selfLabel = UILabel()
-    let conteinerForLabel = UIView()
+    let containerForLabel = UIView()
     let gradientLayer = CAGradientLayer()
 
-    required init?(coder: NSCoder, controller: UIViewController, goToIdentifier: String) {
-        super.init(coder: coder)
-    }
-
-    init(title: String, width: Int, height: Int, titleSize: CGFloat? = nil, controller: UIViewController, goToIdentifier: String) {
-        let frame = CGRect(x: 0, y: 0, width: width, height: height)
-        super.init(frame: frame)
-        buttonSetup(title: title, frame: frame, titleSize: titleSize)
-        self.isUserInteractionEnabled = true
-        let gesture = CustomTapGestureRec(target: self, action: #selector(buttonPressed))
-        gesture.numberOfTapsRequired = 1
-        gesture.controllers = controller
-        gesture.identifier = goToIdentifier
-        self.addGestureRecognizer(gesture)
-    }
-    
-    
    
+
+    init(title: String, width: Int, height: Int, titleSize: CGFloat? = nil, goToIdentifier: String) {
+        
+        self.title = title
+        self.width = width
+        self.height = height
+        self.goToIdentifier = goToIdentifier
+        self.titleSize = titleSize
+        super.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        buttonSetup()
+        addTapGesture()
+        self.isUserInteractionEnabled = true
+    }
+    
+    
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,20 +44,20 @@ class ButtonWithShadow: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        gradientLayer.frame = conteinerForLabel.bounds
+        
+        let radius = self.bounds.width * 0.1
+        layer.cornerRadius = radius
+        containerForLabel.layer.cornerRadius = radius
+        gradientLayer.frame = containerForLabel.bounds
         dropShadow(color: Colors.mainColorPink, opacity: 0.45, radius: 7)
     }
 
 
 
 
-    func buttonSetup(title: String, frame: CGRect, titleSize: CGFloat?) {
-
-
-
-        layer.cornerRadius = self.frame.height / 2.5
+    func buttonSetup(){
+        
         backgroundColor = .black.withAlphaComponent(0.5)
-        self.frame = frame
         layer.borderWidth = 0.50
         layer.borderColor = Colors.mainColorPink
         self.layoutIfNeeded()
@@ -61,14 +65,13 @@ class ButtonWithShadow: UIView {
 
        
         
-        conteinerForLabel.layer.cornerRadius = self.frame.height / 2.5
-        conteinerForLabel.translatesAutoresizingMaskIntoConstraints = false
-        conteinerForLabel.layer.masksToBounds = true
-        addSubview(conteinerForLabel)
-        conteinerForLabel.topAnchor.constraint(equalTo: topAnchor, constant: self.frame.height * 0.09).isActive = true
-        conteinerForLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -( self.frame.height * 0.09)).isActive = true
-        conteinerForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: self.frame.height * 0.09).isActive = true
-        conteinerForLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -( self.frame.height * 0.09)).isActive = true
+        containerForLabel.translatesAutoresizingMaskIntoConstraints = false
+        containerForLabel.layer.masksToBounds = true
+        addSubview(containerForLabel)
+        containerForLabel.topAnchor.constraint(equalTo: topAnchor, constant: self.frame.height * 0.09).isActive = true
+        containerForLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -( self.frame.height * 0.09)).isActive = true
+        containerForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: self.frame.height * 0.09).isActive = true
+        containerForLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -( self.frame.height * 0.09)).isActive = true
         
         
        
@@ -77,7 +80,7 @@ class ButtonWithShadow: UIView {
 
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        conteinerForLabel.layer.insertSublayer(gradientLayer, at: 0)
+        containerForLabel.layer.insertSublayer(gradientLayer, at: 0)
 
 
         selfLabel.text = title
@@ -86,19 +89,43 @@ class ButtonWithShadow: UIView {
         selfLabel.textAlignment = .center
         selfLabel.numberOfLines = 0
         selfLabel.translatesAutoresizingMaskIntoConstraints = false
-        conteinerForLabel.addSubview(selfLabel)
-        selfLabel.topAnchor.constraint(equalTo: conteinerForLabel.topAnchor).isActive = true
-        selfLabel.bottomAnchor.constraint(equalTo: conteinerForLabel.bottomAnchor).isActive = true
-        selfLabel.leadingAnchor.constraint(equalTo: conteinerForLabel.leadingAnchor).isActive = true
-        selfLabel.trailingAnchor.constraint(equalTo: conteinerForLabel.trailingAnchor).isActive = true
+        containerForLabel.addSubview(selfLabel)
+        selfLabel.topAnchor.constraint(equalTo: containerForLabel.topAnchor).isActive = true
+        selfLabel.bottomAnchor.constraint(equalTo: containerForLabel.bottomAnchor).isActive = true
+        selfLabel.leadingAnchor.constraint(equalTo: containerForLabel.leadingAnchor).isActive = true
+        selfLabel.trailingAnchor.constraint(equalTo: containerForLabel.trailingAnchor).isActive = true
 
+    }
+    
+    
+    func addTapGesture(){
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(buttonPressed))
+        gesture.numberOfTapsRequired = 1
+        self.addGestureRecognizer(gesture)
+        
+    }
+    
+    
+    func findVC() -> UIViewController?{
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let viewContoller = nextResponder as? UIViewController{
+                return viewContoller
+            }
+            responder = nextResponder
+        }
+        return nil
     }
 
 
-    @objc func buttonPressed(sender: CustomTapGestureRec){
+    @objc func buttonPressed(){
 
         gradientLayer.colors = [#colorLiteral(red: 0.6323029399, green: 0.08555687219, blue: 0.3645603657, alpha: 0.7098768626).cgColor, #colorLiteral(red: 0.7606634498, green: 0.09257154912, blue: 0.4276409745, alpha: 0.8934706126).cgColor, #colorLiteral(red: 0.8294126391, green: 0.09603773803, blue: 0.4644299746, alpha: 1).cgColor]
-        sender.controllers!.performSegue(withIdentifier: sender.identifier!, sender: nil)
+        
+        guard let goToIdentifier = goToIdentifier else {return}
+        guard let controller = findVC() else {return}
+        controller.performSegue(withIdentifier: goToIdentifier, sender: nil)
     }
 
 
