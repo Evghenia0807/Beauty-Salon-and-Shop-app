@@ -20,10 +20,9 @@ class BookingViewController: LogoViewController {
 
    
     @IBOutlet weak var categoryCollectionView: UICollectionView!
-    
     let tableServicesList = BookingTableView()
     let customHeaderView = UIView()
-    let labelHeader = UILabel()
+    let serviceName = UILabel()
     var selectedCell = IndexPath(row: 0, section: 0)
     
    
@@ -32,26 +31,50 @@ class BookingViewController: LogoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCollectionView()
-        setupTableView()
-        customHeader()
+        setupUIComponents()
+        activateConstraints()
     }
-   
+    
+    func setupUIComponents(){
+        setupCollectionView()
+        customHeader()
+        setupTableView()
+    }
+    
+    func activateConstraints(){
+        NSLayoutConstraint.activate([
+            customHeaderView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor),
+            customHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            customHeaderView.heightAnchor.constraint(equalToConstant: 50),
+            customHeaderView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            serviceName.topAnchor.constraint(equalTo: customHeaderView.topAnchor),
+            serviceName.bottomAnchor.constraint(equalTo: customHeaderView.bottomAnchor),
+            serviceName.leadingAnchor.constraint(equalTo: customHeaderView.leadingAnchor),
+            serviceName.trailingAnchor.constraint(equalTo: customHeaderView.trailingAnchor),
+            
+            tableServicesList.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableServicesList.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableServicesList.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableServicesList.topAnchor.constraint(equalTo: customHeaderView.bottomAnchor)
+        ])
+    }
     
     func customHeader(){
         customHeaderView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 50)
         customHeaderView.backgroundColor = .black
-        customHeaderView.addSubview(labelHeader)
-        tableServicesList.tableHeaderView = customHeaderView
-        labelHeader.translatesAutoresizingMaskIntoConstraints = false
-        labelHeader.topAnchor.constraint(equalTo: customHeaderView.topAnchor).isActive = true
-        labelHeader.bottomAnchor.constraint(equalTo: customHeaderView.bottomAnchor).isActive = true
-        labelHeader.leadingAnchor.constraint(equalTo: customHeaderView.leadingAnchor).isActive = true
-        labelHeader.trailingAnchor.constraint(equalTo: customHeaderView.trailingAnchor).isActive = true
-        labelHeader.text = tableServicesList.service.rawValue
-        labelHeader.textColor = UIColor(cgColor: Colors.mainColorPink)
-        labelHeader.textAlignment = .left
-        labelHeader.font = .systemFont(ofSize: 30, weight: .light)
+        customHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(customHeaderView)
+        serviceNameSetup()
+    }
+        
+    func serviceNameSetup(){
+        serviceName.text = tableServicesList.service.rawValue
+        serviceName.textColor = UIColor(cgColor: Colors.mainColorPink)
+        serviceName.textAlignment = .left
+        serviceName.font = .systemFont(ofSize: 30, weight: .light)
+        serviceName.translatesAutoresizingMaskIntoConstraints = false
+        customHeaderView.addSubview(serviceName)
     }
 
     
@@ -62,13 +85,8 @@ class BookingViewController: LogoViewController {
         tableServicesList.backgroundColor = .black
         tableServicesList.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         tableServicesList.separatorColor = UIColor(cgColor: Colors.mainColorPink)
-        
-        view.addSubview(tableServicesList)
         tableServicesList.translatesAutoresizingMaskIntoConstraints = false
-        tableServicesList.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableServicesList.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableServicesList.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableServicesList.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor).isActive = true
+        view.addSubview(tableServicesList)
     }
     
     
@@ -113,7 +131,7 @@ extension  BookingViewController: UICollectionViewDataSource, UICollectionViewDe
         collectionView.reloadData()
         
         tableServicesList.service = CollectionDataModel.sections[indexPath.row].title
-        labelHeader.text =  tableServicesList.service.rawValue
+        serviceName.text =  tableServicesList.service.rawValue
         tableServicesList.reloadData()
         
     }
