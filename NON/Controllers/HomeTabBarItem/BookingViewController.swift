@@ -18,14 +18,11 @@ import UIKit
 class BookingViewController: LogoViewController {
    
 
-   
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     let tableServicesList = BookingTableView()
     let customHeaderView = UIView()
     let serviceName = UILabel()
     var selectedCell = IndexPath(row: 0, section: 0)
-    
-   
     
     
     override func viewDidLoad() {
@@ -35,17 +32,18 @@ class BookingViewController: LogoViewController {
         activateConstraints()
     }
     
-    func setupUIComponents(){
+    
+    private func setupUIComponents(){
         setupCollectionView()
         customHeader()
         setupTableView()
     }
     
-    func activateConstraints(){
+    private func activateConstraints(){
         NSLayoutConstraint.activate([
             customHeaderView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor),
             customHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            customHeaderView.heightAnchor.constraint(equalToConstant: 50),
+            customHeaderView.heightAnchor.constraint(equalToConstant: 70),
             customHeaderView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
             
             serviceName.topAnchor.constraint(equalTo: customHeaderView.topAnchor),
@@ -60,7 +58,7 @@ class BookingViewController: LogoViewController {
         ])
     }
     
-    func customHeader(){
+    private func customHeader(){
         customHeaderView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 50)
         customHeaderView.backgroundColor = .black
         customHeaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +66,7 @@ class BookingViewController: LogoViewController {
         serviceNameSetup()
     }
         
-    func serviceNameSetup(){
+    private func serviceNameSetup(){
         serviceName.text = tableServicesList.service.rawValue
         serviceName.textColor = UIColor(cgColor: Colors.mainColorPink)
         serviceName.textAlignment = .left
@@ -77,9 +75,7 @@ class BookingViewController: LogoViewController {
         customHeaderView.addSubview(serviceName)
     }
 
-    
-    
-    func setupTableView(){
+    private func setupTableView(){
         tableServicesList.dataSource = tableServicesList
         tableServicesList.delegate = tableServicesList
         tableServicesList.backgroundColor = .black
@@ -89,9 +85,7 @@ class BookingViewController: LogoViewController {
         view.addSubview(tableServicesList)
     }
     
-    
-    
-    func setupCollectionView(){
+    private func setupCollectionView(){
         categoryCollectionView.dataSource = self
         categoryCollectionView.delegate = self
         categoryCollectionView.register(UINib(nibName: BookingCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: BookingCollectionViewCell.identifier)
@@ -99,7 +93,6 @@ class BookingViewController: LogoViewController {
         layout.scrollDirection = .horizontal
         categoryCollectionView.collectionViewLayout = layout
     }
-    
     
     func setupCell(indexP: IndexPath) -> UICollectionViewCell{
         let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: BookingCollectionViewCell.identifier, for: indexP) as! BookingCollectionViewCell
@@ -118,6 +111,7 @@ class BookingViewController: LogoViewController {
 
 
 extension  BookingViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         CollectionDataModel.sections.count
     }
@@ -133,11 +127,12 @@ extension  BookingViewController: UICollectionViewDataSource, UICollectionViewDe
         tableServicesList.service = CollectionDataModel.sections[indexPath.row].title
         serviceName.text =  tableServicesList.service.rawValue
         tableServicesList.reloadData()
-        
     }
 }
     
     
+
+
     
     extension BookingViewController: UICollectionViewDelegateFlowLayout{
         
