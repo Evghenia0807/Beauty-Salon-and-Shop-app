@@ -115,14 +115,3 @@ class GiftVoucherViewController: LogoViewController {
 
 }
 
-
-
-//    BEST PRESENT
-//    FOR YOUR  FRIEND
-//    NO Need to think about present anymore.
-//    Buy a gift voucher for the desired amount
-//     from 500 aed in incredibly beautiful packaging
-//    and leave it to your friend to decide
-//    what she will spend it on in our salon,
-//    massage, manicure or quality beauty products
-//    in our online store
