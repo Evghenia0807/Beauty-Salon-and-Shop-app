@@ -18,6 +18,12 @@ class ButtonWithShadow: UIView {
     let selfLabel = UILabel()
     let containerForLabel = UIView()
     let gradientLayer = CAGradientLayer()
+    
+    var isActive: Bool = true {
+        didSet {
+            updateButtonAppearance()
+        }
+    }
 
    
 
@@ -95,8 +101,24 @@ class ButtonWithShadow: UIView {
         selfLabel.leadingAnchor.constraint(equalTo: containerForLabel.leadingAnchor).isActive = true
         selfLabel.trailingAnchor.constraint(equalTo: containerForLabel.trailingAnchor).isActive = true
 
+        updateButtonAppearance()
     }
-    
+        
+        
+    func updateButtonAppearance() {
+                  if isActive {
+                      containerForLabel.backgroundColor = .clear
+                      gradientLayer.isHidden = false
+                      selfLabel.textColor = UIColor(cgColor: Colors.subtitleColorPink).withAlphaComponent(1)
+                      self.isUserInteractionEnabled = true
+                  } else {
+                      containerForLabel.backgroundColor = .black
+                      gradientLayer.isHidden = true
+                      selfLabel.textColor = UIColor(cgColor: Colors.subtitleColorPink).withAlphaComponent(0.5)
+                      self.isUserInteractionEnabled = false
+                  }
+              }
+
     
     func addTapGesture(){
         
