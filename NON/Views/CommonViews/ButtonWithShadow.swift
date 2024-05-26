@@ -24,6 +24,16 @@ class ButtonWithShadow: UIView {
             updateButtonAppearance()
         }
     }
+    
+    
+    init() {
+        self.title = ""
+        self.width = 0
+        self.height = 0
+        self.goToIdentifier = ""
+        self.titleSize = nil
+        super.init(frame: .zero)
+    }
 
    
 

@@ -21,7 +21,7 @@ class GiftVoucherViewController: LogoViewController {
     @IBOutlet weak var trailingConstrait2: NSLayoutConstraint!
     @IBOutlet weak var trailingConstrait3: NSLayoutConstraint!
     @IBOutlet weak var subtitleText: UILabel!
-    var buyButton: ButtonWithShadow!
+    var buyButton = ButtonWithShadow()
     
     
     var largeText: [UILabel] = []

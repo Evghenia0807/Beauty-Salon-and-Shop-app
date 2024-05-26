@@ -22,9 +22,9 @@ class HomeViewController: UIViewController {
    
     
 
-    var shoppingButton: ButtonWithShadow!
-    var bookingButton: ButtonWithShadow!
-    var voucherButton: ButtonWithShadow!
+    var shoppingButton = ButtonWithShadow()
+    var bookingButton = ButtonWithShadow()
+    var voucherButton = ButtonWithShadow()
 
 
     required init?(coder aDecoder: NSCoder) {
