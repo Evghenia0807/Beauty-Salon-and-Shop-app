@@ -19,10 +19,11 @@ class BookingViewController: LogoViewController {
    
 
     @IBOutlet weak var categoryCollectionView: UICollectionView!
-    let tableServicesList = BookingTableView()
+    let listOfServices = BookingTableView()
     let customHeaderView = UIView()
-    let serviceName = UILabel()
+    let categoryName = UILabel()
     var selectedCell = IndexPath(row: 0, section: 0)
+    var bookButton = ButtonWithShadow()
     
     
     override func viewDidLoad() {
@@ -44,17 +45,22 @@ class BookingViewController: LogoViewController {
             customHeaderView.topAnchor.constraint(equalTo: categoryCollectionView.bottomAnchor),
             customHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customHeaderView.heightAnchor.constraint(equalToConstant: 70),
-            customHeaderView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            customHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            serviceName.topAnchor.constraint(equalTo: customHeaderView.topAnchor),
-            serviceName.bottomAnchor.constraint(equalTo: customHeaderView.bottomAnchor),
-            serviceName.leadingAnchor.constraint(equalTo: customHeaderView.leadingAnchor),
-            serviceName.trailingAnchor.constraint(equalTo: customHeaderView.trailingAnchor),
+            categoryName.topAnchor.constraint(equalTo: customHeaderView.topAnchor),
+            categoryName.bottomAnchor.constraint(equalTo: customHeaderView.bottomAnchor),
+            categoryName.leadingAnchor.constraint(equalTo: customHeaderView.leadingAnchor, constant: 10),
+            categoryName.trailingAnchor.constraint(equalTo: view.centerXAnchor),
             
-            tableServicesList.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableServicesList.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableServicesList.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableServicesList.topAnchor.constraint(equalTo: customHeaderView.bottomAnchor)
+            bookButton.topAnchor.constraint(equalTo: customHeaderView.topAnchor,constant: 10),
+            bookButton.bottomAnchor.constraint(equalTo: customHeaderView.bottomAnchor,constant: -10),
+            bookButton.trailingAnchor.constraint(equalTo: customHeaderView.trailingAnchor,constant: -10),
+            bookButton.leadingAnchor.constraint(equalTo: categoryName.trailingAnchor,constant: 10),
+            
+            listOfServices.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            listOfServices.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            listOfServices.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            listOfServices.topAnchor.constraint(equalTo: customHeaderView.bottomAnchor)
         ])
     }
     
@@ -63,26 +69,31 @@ class BookingViewController: LogoViewController {
         customHeaderView.backgroundColor = .black
         customHeaderView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(customHeaderView)
-        serviceNameSetup()
+        configHeaderSubviews()
     }
         
-    private func serviceNameSetup(){
-        serviceName.text = tableServicesList.service.rawValue
-        serviceName.textColor = UIColor(cgColor: Colors.mainColorPink)
-        serviceName.textAlignment = .left
-        serviceName.font = .systemFont(ofSize: 30, weight: .light)
-        serviceName.translatesAutoresizingMaskIntoConstraints = false
-        customHeaderView.addSubview(serviceName)
+    private func configHeaderSubviews(){
+        categoryName.text = listOfServices.service.rawValue
+        categoryName.textColor = UIColor(cgColor: Colors.mainColorPink)
+        categoryName.textAlignment = .left
+        categoryName.font = .systemFont(ofSize: 30, weight: .light)
+        categoryName.translatesAutoresizingMaskIntoConstraints = false
+        
+        bookButton = ButtonWithShadow(title: "Book", width: 200, height: 60, goToIdentifier: GiftVoucherViewController.identifier)
+        bookButton.isActive = false
+        
+        customHeaderView.addSubview(categoryName)
+        customHeaderView.addSubview(bookButton)
     }
 
     private func setupTableView(){
-        tableServicesList.dataSource = tableServicesList
-        tableServicesList.delegate = tableServicesList
-        tableServicesList.backgroundColor = .black
-        tableServicesList.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        tableServicesList.separatorColor = UIColor(cgColor: Colors.mainColorPink)
-        tableServicesList.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableServicesList)
+        listOfServices.dataSource = listOfServices
+        listOfServices.delegate = listOfServices
+        listOfServices.backgroundColor = .black
+        listOfServices.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        listOfServices.separatorColor = UIColor(cgColor: Colors.mainColorPink)
+        listOfServices.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(listOfServices)
     }
     
     private func setupCollectionView(){
@@ -124,9 +135,9 @@ extension  BookingViewController: UICollectionViewDataSource, UICollectionViewDe
         selectedCell = indexPath
         collectionView.reloadData()
         
-        tableServicesList.service = CollectionDataModel.sections[indexPath.row].title
-        serviceName.text =  tableServicesList.service.rawValue
-        tableServicesList.reloadData()
+        listOfServices.service = CollectionDataModel.sections[indexPath.row].title
+        categoryName.text =  listOfServices.service.rawValue
+        listOfServices.reloadData()
     }
 }
     

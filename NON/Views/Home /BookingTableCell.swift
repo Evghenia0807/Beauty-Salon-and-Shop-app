@@ -48,7 +48,7 @@ class BookingTableCell: UITableViewCell {
         serviceName.textColor = .white
         price.textColor = UIColor(cgColor: Colors.subtitleColorPink)
         
-        accessoryView = UIImageView(image: UIImage(systemName: "chevron.right"))
+        accessoryView = UIImageView(image: UIImage(systemName: "plus"))
         accessoryView?.tintColor = UIColor(cgColor: Colors.darkGray)
     }
     
