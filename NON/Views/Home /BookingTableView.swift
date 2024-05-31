@@ -10,7 +10,6 @@ import UIKit
 class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     
-    let bookingCell = BookingTableCell()
     let Data = BookingData()
     var service = ServicesType.nails
     
@@ -40,13 +39,19 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor(cgColor: Colors.almostBlack)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         40
     }
-  
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? BookingTableCell else { return }
+               cell.serviceIsChosen.toggle()
+    }
+    
 }
 
 

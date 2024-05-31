@@ -79,7 +79,7 @@ class BookingViewController: LogoViewController {
         categoryName.font = .systemFont(ofSize: 30, weight: .light)
         categoryName.translatesAutoresizingMaskIntoConstraints = false
         
-        bookButton = ButtonWithShadow(title: "Book", width: 200, height: 60, goToIdentifier: GiftVoucherViewController.identifier)
+        bookButton = ButtonWithShadow(title: "Book", width: 200, height: 60, goToIdentifier: "MakeABookingViewController")
         bookButton.isActive = false
         
         customHeaderView.addSubview(categoryName)
