@@ -32,7 +32,6 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         tableView.register(BookingTableCell.self,
                                  forCellReuseIdentifier: "BookingTableCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookingTableCell", for: indexPath) as! BookingTableCell
-        cell.setupCell()
         cell.serviceName.text = Data.fill(object: .tableView(service))[indexPath.section].serviceNamePrice[indexPath.row].name
         cell.price.text = Data.fill(object: .tableView(service))[indexPath.section].serviceNamePrice[indexPath.row].price
         return cell
