@@ -30,6 +30,7 @@
 		D3C1036A2A73D85C00A23C02 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */; };
 		D3C1036C2A73D9A300A23C02 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C1036B2A73D9A300A23C02 /* Account.storyboard */; };
 		D3C1036E2A73DACB00A23C02 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1036D2A73DACB00A23C02 /* AccountViewController.swift */; };
+		D3C2D02A2C1ED75400E432CA /* OrderCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2D0292C1ED75400E432CA /* OrderCart.swift */; };
 		D3CCE4CC2A65953C00B0DBCC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CCE4CB2A65953C00B0DBCC /* Home.storyboard */; };
 		D3DCEDC12A3A19BC008F55AA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DCEDC02A3A19BC008F55AA /* HomeViewController.swift */; };
 		D3E742BE2B387DBD0037C350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E742BD2B387DBD0037C350 /* LaunchScreen.storyboard */; };
@@ -61,6 +62,7 @@
 		D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		D3C1036B2A73D9A300A23C02 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		D3C1036D2A73DACB00A23C02 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		D3C2D0292C1ED75400E432CA /* OrderCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCart.swift; sourceTree = "<group>"; };
 		D3CCE4CB2A65953C00B0DBCC /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		D3DCEDC02A3A19BC008F55AA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D3E742BD2B387DBD0037C350 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				D311BBE82B0E08E700B6CDC5 /* Colors.swift */,
+				D3C2D0292C1ED75400E432CA /* OrderCart.swift */,
 			);
 			path = CommonModels;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				D348777329FEA9C000B23D6E /* SceneDelegate.swift in Sources */,
 				D3224C792B20C831006B3007 /* Logo.swift in Sources */,
 				D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */,
+				D3C2D02A2C1ED75400E432CA /* OrderCart.swift in Sources */,
 				D30EBDAC2B26144900AA790B /* HomeAutoSliderModel.swift in Sources */,
 				D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */,
 				D3DCEDC12A3A19BC008F55AA /* HomeViewController.swift in Sources */,

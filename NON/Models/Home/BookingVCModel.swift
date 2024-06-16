@@ -38,7 +38,7 @@ struct CollectionDataModel: Hashable{
 }
 
 
-enum Category: String{
+enum Category: String, Codable{
     case nails = "Nails"
     case hair = "Hair Cut"
     case lashes = "Lashes"
@@ -50,13 +50,13 @@ enum Category: String{
 }
 
 
-struct Sections{
+struct Sections: Codable{
     let sectionName: String
-    let serviceNamePrice: [ServiceNamePrice]
+    var serviceNamePrice: [ServiceNamePrice]
     }
 
 
-struct ServiceNamePrice{
+struct ServiceNamePrice: Codable{
     let name: String
     let price: String
 

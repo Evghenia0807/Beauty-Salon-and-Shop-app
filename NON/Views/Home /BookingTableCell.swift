@@ -10,6 +10,7 @@ import UIKit
 class BookingTableCell: UITableViewCell {
 
    static let indentifier = "BookingTableCell"
+    
     let accessoryPlus = UIImageView(image: UIImage(systemName: "plus"))
     var serviceName = UILabel()
     var price = UILabel()
@@ -18,6 +19,9 @@ class BookingTableCell: UITableViewCell {
             updateAccessoryView()
         }
     }
+    var category: Category?
+    var section: Sections?
+    var service: ServiceNamePrice?
    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -72,5 +76,10 @@ class BookingTableCell: UITableViewCell {
     
     @objc func accessoryTapped() {
         serviceIsChosen.toggle()
-        }
+        guard let category = category, let section = section, let service = service else { return }
+
+                Cart.shared.updateCart(category: category, section: section, service: service) // << Изменено
+
+                print(Cart.shared.chosenServices)
+    }
 }
