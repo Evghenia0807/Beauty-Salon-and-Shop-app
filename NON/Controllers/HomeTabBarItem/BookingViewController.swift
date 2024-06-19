@@ -29,7 +29,20 @@ class BookingViewController: LogoViewController {
         collectionViewManager = BookingCollectionViewManager(viewController: self)
         setupUIComponents()
         activateConstraints()
-    }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBookButtonState), name: .cartDidUpdate, object: nil) // << Добавлено
+                updateBookButtonState() // << Добавлено
+            }
+
+            @objc func updateBookButtonState() {
+                let hasSelectedServices = !Cart.shared.chosenServices.isEmpty
+                bookButton.isActive = hasSelectedServices
+            }
+
+            deinit {
+                NotificationCenter.default.removeObserver(self, name: .cartDidUpdate, object: nil) // << Добавлено
+            }
+    
     
     private func setupUIComponents(){
         setupCollectionView()

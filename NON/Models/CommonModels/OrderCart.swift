@@ -49,6 +49,7 @@ class Cart {
             // Обновление категории с оставшимися секциями
             chosenServices[category] = existingServices
         }
+        NotificationCenter.default.post(name: .cartDidUpdate, object: nil)
         saveToUserDefaults()
     }
 

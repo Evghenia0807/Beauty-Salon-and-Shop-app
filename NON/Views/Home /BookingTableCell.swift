@@ -78,8 +78,6 @@ class BookingTableCell: UITableViewCell {
         serviceIsChosen.toggle()
         guard let category = category, let section = section, let service = service else { return }
 
-                Cart.shared.updateCart(category: category, section: section, service: service) // << Изменено
-
-                print(Cart.shared.chosenServices)
+                Cart.shared.updateCart(category: category, section: section, service: service) // << Изменено     
     }
 }
