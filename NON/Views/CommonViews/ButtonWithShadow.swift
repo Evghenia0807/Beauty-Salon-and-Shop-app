@@ -65,7 +65,7 @@ class ButtonWithShadow: UIView {
         layer.cornerRadius = radius
         containerForLabel.layer.cornerRadius = radius
         gradientLayer.frame = containerForLabel.bounds
-        dropShadow(color: Colors.mainColorPink, opacity: 0.45, radius: 7)
+        dropShadow(color: Colors.CGColorType.mainColorPink.value, opacity: 0.45, radius: 7)
     }
 
 
@@ -75,7 +75,7 @@ class ButtonWithShadow: UIView {
         
         backgroundColor = .black.withAlphaComponent(0.5)
         layer.borderWidth = 0.50
-        layer.borderColor = Colors.mainColorPink
+        layer.borderColor = Colors.CGColorType.mainColorPink.value
         self.layoutIfNeeded()
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -100,7 +100,7 @@ class ButtonWithShadow: UIView {
 
 
         selfLabel.text = title
-        selfLabel.textColor = UIColor(cgColor: Colors.subtitleColorPink)
+        selfLabel.textColor = UIColor(cgColor: Colors.CGColorType.subtitleColorPink.value)
         selfLabel.font = selfLabel.font.withSize(titleSize ?? (self.frame.height * 0.25))
         selfLabel.textAlignment = .center
         selfLabel.numberOfLines = 0
@@ -119,12 +119,12 @@ class ButtonWithShadow: UIView {
                   if isActive {
                       containerForLabel.backgroundColor = .clear
                       gradientLayer.isHidden = false
-                      selfLabel.textColor = UIColor(cgColor: Colors.subtitleColorPink).withAlphaComponent(1)
+                      selfLabel.textColor = Colors.UIColorType.subtitleColorPink.value.withAlphaComponent(1)
                       self.isUserInteractionEnabled = true
                   } else {
                       containerForLabel.backgroundColor = .black
                       gradientLayer.isHidden = true
-                      selfLabel.textColor = UIColor(cgColor: Colors.subtitleColorPink).withAlphaComponent(0.5)
+                      selfLabel.textColor = Colors.UIColorType.subtitleColorPink.value.withAlphaComponent(0.5)
                       self.isUserInteractionEnabled = false
                   }
               }

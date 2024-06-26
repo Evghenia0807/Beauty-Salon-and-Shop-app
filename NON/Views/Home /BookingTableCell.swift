@@ -54,7 +54,7 @@ class BookingTableCell: UITableViewCell {
         
         backgroundColor = .black
         serviceName.textColor = .white
-        price.textColor = UIColor(cgColor: Colors.subtitleColorPink)
+        price.textColor = Colors.UIColorType.subtitleColorPink.value
     }
     
     func activateConstraints(){
@@ -71,7 +71,7 @@ class BookingTableCell: UITableViewCell {
     }
     
     func updateAccessoryView() {
-        accessoryPlus.tintColor = serviceIsChosen ? UIColor(cgColor: Colors.mainColorPink) : UIColor(cgColor: Colors.darkGray)
+        accessoryPlus.tintColor = serviceIsChosen ? Colors.UIColorType.mainColorPink.value : Colors.UIColorType.darkGray.value
     }
     
     @objc func accessoryTapped() {

@@ -60,7 +60,7 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor(cgColor: Colors.almostBlack)
+        tableView.cellForRow(at: indexPath)?.backgroundColor = Colors.UIColorType.almostBlack.value
         tableView.deselectRow(at: indexPath, animated: true)
         let section = data.fill(object: .tableView(currentCategory))[indexPath.section]
                 let service = section.serviceNamePrice[indexPath.row]

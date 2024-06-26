@@ -27,6 +27,7 @@
 		D38849562C2344240051C63A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38849552C2344240051C63A /* NotificationCenter.swift */; };
 		D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9F702B61497F00D9132F /* BookingVCModel.swift */; };
 		D3ADFA2A2B3C2B700022E93B /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADFA292B3C2B700022E93B /* View + Extension.swift */; };
+		D3AF85A22C285D230099B615 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF85A12C285D230099B615 /* CartViewController.swift */; };
 		D3C103682A73D63B00A23C02 /* AboutUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C103672A73D63B00A23C02 /* AboutUs.storyboard */; };
 		D3C1036A2A73D85C00A23C02 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */; };
 		D3C1036C2A73D9A300A23C02 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C1036B2A73D9A300A23C02 /* Account.storyboard */; };
@@ -35,6 +36,7 @@
 		D3CCE4CC2A65953C00B0DBCC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CCE4CB2A65953C00B0DBCC /* Home.storyboard */; };
 		D3DCEDC12A3A19BC008F55AA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DCEDC02A3A19BC008F55AA /* HomeViewController.swift */; };
 		D3E742BE2B387DBD0037C350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E742BD2B387DBD0037C350 /* LaunchScreen.storyboard */; };
+		D3FAF8402C2C3930009F969A /* OrderDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,7 @@
 		D38849552C2344240051C63A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		D39A9F702B61497F00D9132F /* BookingVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingVCModel.swift; sourceTree = "<group>"; };
 		D3ADFA292B3C2B700022E93B /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
+		D3AF85A12C285D230099B615 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D3C103672A73D63B00A23C02 /* AboutUs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutUs.storyboard; sourceTree = "<group>"; };
 		D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		D3C1036B2A73D9A300A23C02 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		D3CCE4CB2A65953C00B0DBCC /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		D3DCEDC02A3A19BC008F55AA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D3E742BD2B387DBD0037C350 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				D3302BA62B83C5240027D6AF /* LogoViewController.swift */,
+				D3AF85A12C285D230099B615 /* CartViewController.swift */,
 				D315B7A72B44834300365FC0 /* HomeTabBarItem */,
 				D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */,
 				D3C1036D2A73DACB00A23C02 /* AccountViewController.swift */,
@@ -188,6 +193,7 @@
 			children = (
 				D3224C782B20C831006B3007 /* Logo.swift */,
 				D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */,
+				D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -314,8 +320,10 @@
 				D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */,
 				D38849562C2344240051C63A /* NotificationCenter.swift in Sources */,
 				D3C2D02A2C1ED75400E432CA /* OrderCart.swift in Sources */,
+				D3AF85A22C285D230099B615 /* CartViewController.swift in Sources */,
 				D30EBDAC2B26144900AA790B /* HomeAutoSliderModel.swift in Sources */,
 				D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */,
+				D3FAF8402C2C3930009F969A /* OrderDisplayView.swift in Sources */,
 				D3DCEDC12A3A19BC008F55AA /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

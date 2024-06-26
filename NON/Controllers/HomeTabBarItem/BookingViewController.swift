@@ -84,12 +84,12 @@ class BookingViewController: LogoViewController {
         
     private func configHeaderSubviews(){
         categoryName.text = servicesTableView.currentCategory.rawValue
-        categoryName.textColor = UIColor(cgColor: Colors.mainColorPink)
+        categoryName.textColor = Colors.UIColorType.mainColorPink.value
         categoryName.textAlignment = .left
         categoryName.font = .systemFont(ofSize: 30, weight: .light)
         categoryName.translatesAutoresizingMaskIntoConstraints = false
         
-        bookButton = ButtonWithShadow(title: "Book", width: 200, height: 60, goToIdentifier: "MakeABookingViewController")
+        bookButton = ButtonWithShadow(title: "Book", width: 200, height: 60, goToIdentifier: CartViewController.identifier)
         bookButton.isActive = false
         
         customHeaderView.addSubview(categoryName)
@@ -99,7 +99,7 @@ class BookingViewController: LogoViewController {
     private func setupTableView(){
         servicesTableView.backgroundColor = .black
         servicesTableView.separatorInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        servicesTableView.separatorColor = UIColor(cgColor: Colors.mainColorPink)
+        servicesTableView.separatorColor = Colors.UIColorType.mainColorPink.value
         servicesTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(servicesTableView)
     }
