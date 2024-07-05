@@ -34,6 +34,10 @@ class LogoViewController: UIViewController {
         label.centerXAnchor.constraint(equalTo: conteiner.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: conteiner.centerYAnchor).isActive = true
         
+        let backButton = UIBarButtonItem()
+            backButton.title = ""
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
     }
     
 

@@ -8,64 +8,42 @@
 import UIKit
 import SwiftUI
 
-class CartViewController: UIViewController {
+class CartViewController: LogoViewController {
     static let identifier = "CartViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Создаем SwiftUI представление с тремя OrderDisplayView в ScrollView
+        let swiftUIView = ScrollView {
+            VStack() {
+                OrderDisplayView(total: 350, serviceCount: 2)
+                OrderDisplayView(total: 150, serviceCount: 1)
+                OrderDisplayView(total: 450, serviceCount: 3)
+            }
+            .padding()
+            .background(Color.black)
+            .cornerRadius(10)
+        }
+            .padding()
+            .background(Color.black)
+
+        // Создаем UIHostingController
+        let hostingController = UIHostingController(rootView: swiftUIView)
+
+        // Добавляем UIHostingController в текущий UIViewController
+        addChild(hostingController)
+        view.addSubview(hostingController.view)
         
-        let orderDisplayView = UIHostingController(rootView: OrderDisplayView(total: 350, serviceCount: 2))
-        addChild(orderDisplayView)
-        orderDisplayView.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(orderDisplayView.view)
-        
+        // Устанавливаем ограничения
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            orderDisplayView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            orderDisplayView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            orderDisplayView.view.topAnchor.constraint(equalTo: view.topAnchor),
-            orderDisplayView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            hostingController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
-        orderDisplayView.didMove(toParent: self)
-        
-        // Добавляем наблюдателя за изменением размера контента
-        orderDisplayView.view.setContentHuggingPriority(.required, for: .vertical)
-        orderDisplayView.view.setContentCompressionResistancePriority(.required, for: .vertical)
+
+        hostingController.didMove(toParent: self)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-//import UIKit
-//import SwiftUI
-//
-//class CartViewController: UIViewController {
-//
-//    static let identifier = "CartViewController"
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let cartView = UIHostingController(rootView: CartView())
-//        addChild(cartView)
-//        cartView.view.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(cartView.view)
-//        
-//        NSLayoutConstraint.activate([
-//            cartView.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            cartView.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            cartView.view.topAnchor.constraint(equalTo: view.topAnchor),
-//            cartView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//        
-//        cartView.didMove(toParent: self)
-//    }
-//}
