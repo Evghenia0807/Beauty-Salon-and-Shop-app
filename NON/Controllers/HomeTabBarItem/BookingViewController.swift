@@ -35,7 +35,7 @@ class BookingViewController: LogoViewController {
             }
 
             @objc func updateBookButtonState() {
-                let hasSelectedServices = !Cart.shared.chosenServices.isEmpty
+                let hasSelectedServices = !Cart.shared.chosenSalonServices.isEmpty
                 bookButton.isActive = hasSelectedServices
             }
 

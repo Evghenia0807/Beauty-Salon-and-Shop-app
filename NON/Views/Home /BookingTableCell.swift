@@ -76,8 +76,8 @@ class BookingTableCell: UITableViewCell {
     
     @objc func accessoryTapped() {
         serviceIsChosen.toggle()
-        guard let category = category, let section = section, let service = service else { return }
+        guard let category = category, let service = service else { return }
 
-                Cart.shared.updateCart(category: category, section: section, service: service) // << Изменено     
+                Cart.shared.updateCart(category: category, service: service)
     }
 }

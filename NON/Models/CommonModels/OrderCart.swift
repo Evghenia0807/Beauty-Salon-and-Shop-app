@@ -15,39 +15,27 @@ class Cart {
         loadFromUserDefaults()
     }
 
-    var chosenServices: [Category: [Sections]] = [:]
+    var chosenSalonServices: [Category: [ServiceNamePrice]] = [:]
+    var chosenGiftVoucher: [Int] = []
+    var chosenShopProducts: [String] = []
 
-    func updateCart(category: Category, section: Sections, service: ServiceNamePrice) {
-        var existingServices = chosenServices[category] ?? []
+    func updateCart(category: Category, service: ServiceNamePrice) {
+        var existingServices = chosenSalonServices[category] ?? []
 
-        if let sectionIndex = existingServices.firstIndex(where: { $0.sectionName == section.sectionName }) {
-            var sectionServices = existingServices[sectionIndex].serviceNamePrice
-            if let serviceIndex = sectionServices.firstIndex(where: { $0.name == service.name }) {
-                // Удаление услуги
-                sectionServices.remove(at: serviceIndex)
-                if sectionServices.isEmpty {
-                    // Удаление секции, если услуги в ней больше нет
-                    existingServices.remove(at: sectionIndex)
-                } else {
-                    // Обновление секции с оставшимися услугами
-                    existingServices[sectionIndex].serviceNamePrice = sectionServices
-                }
-            } else {
-                // Добавление новой услуги в существующую секцию
-                sectionServices.append(service)
-                existingServices[sectionIndex].serviceNamePrice = sectionServices
-            }
+        if let serviceIndex = existingServices.firstIndex(where: { $0.name == service.name }) {
+            // Удаление услуги
+            existingServices.remove(at: serviceIndex)
         } else {
-            // Добавление новой секции с услугой
-            existingServices.append(Sections(sectionName: section.sectionName, serviceNamePrice: [service]))
+            // Добавление новой услуги
+            existingServices.append(service)
         }
 
         if existingServices.isEmpty {
-            // Удаление категории, если секций в ней больше нет
-            chosenServices.removeValue(forKey: category)
+            // Удаление категории, если услуг в ней больше нет
+            chosenSalonServices.removeValue(forKey: category)
         } else {
-            // Обновление категории с оставшимися секциями
-            chosenServices[category] = existingServices
+            // Обновление категории с оставшимися услугами
+            chosenSalonServices[category] = existingServices
         }
         NotificationCenter.default.post(name: .cartDidUpdate, object: nil)
         saveToUserDefaults()
@@ -55,7 +43,7 @@ class Cart {
 
     private func saveToUserDefaults() {
         let defaults = UserDefaults.standard
-        if let encoded = try? JSONEncoder().encode(chosenServices) {
+        if let encoded = try? JSONEncoder().encode(chosenSalonServices) {
             defaults.set(encoded, forKey: "chosenServices")
         }
     }
@@ -63,17 +51,14 @@ class Cart {
     private func loadFromUserDefaults() {
         let defaults = UserDefaults.standard
         if let savedData = defaults.data(forKey: "chosenServices"),
-           let decoded = try? JSONDecoder().decode([Category: [Sections]].self, from: savedData) {
-            chosenServices = decoded
+           let decoded = try? JSONDecoder().decode([Category: [ServiceNamePrice]].self, from: savedData) {
+            chosenSalonServices = decoded
         }
     }
 
-    func isSelected(category: Category, section: Sections, service: ServiceNamePrice) -> Bool {
-        guard let existingServices = chosenServices[category] else { return false }
-        if let sectionIndex = existingServices.firstIndex(where: { $0.sectionName == section.sectionName }) {
-            let sectionServices = existingServices[sectionIndex].serviceNamePrice
-            return sectionServices.contains(where: { $0.name == service.name })
-        }
-        return false
+    func isSelected(category: Category, service: ServiceNamePrice) -> Bool {
+        guard let existingServices = chosenSalonServices[category] else { return false }
+        return existingServices.contains(where: { $0.name == service.name })
     }
 }
+

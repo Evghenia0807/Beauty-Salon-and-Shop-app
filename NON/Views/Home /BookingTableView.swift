@@ -54,7 +54,7 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
                 cell.section = section
                 cell.service = service
                 
-                cell.serviceIsChosen = Cart.shared.isSelected(category: currentCategory, section: section, service: service)
+                cell.serviceIsChosen = Cart.shared.isSelected(category: currentCategory, service: service)
                 
         return cell
     }
@@ -62,11 +62,11 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.backgroundColor = Colors.UIColorType.almostBlack.value
         tableView.deselectRow(at: indexPath, animated: true)
-        let section = data.fill(object: .tableView(currentCategory))[indexPath.section]
-                let service = section.serviceNamePrice[indexPath.row]
+        let category = data.fill(object: .tableView(currentCategory))[indexPath.section]
+        let service = category.serviceNamePrice[indexPath.row]
 
                 
-                Cart.shared.updateCart(category: currentCategory, section: section, service: service)
+                Cart.shared.updateCart(category: currentCategory, service: service)
 
                 
                 tableView.reloadData()

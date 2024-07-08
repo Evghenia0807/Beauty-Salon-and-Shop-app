@@ -26,14 +26,14 @@ struct CollectionDataModel: Hashable{
     let title: Category
 
    static var sections: [Self] = [
-        .init(image: UIImage(named: "NailsSection"), title: Category.nails),
-        .init(image: UIImage(named: "FaceCareSection"), title: Category.faceCare),
-        .init(image: UIImage(named: "HairCutSection"), title: Category.hair),
-        .init(image: UIImage(named: "MassageSection"), title: Category.massage),
-        .init(image: UIImage(named: "LashesSection"), title: Category.lashes),
-        .init(image: UIImage(named: "CosmetologySection"), title: Category.cosmetology),
-        .init(image: UIImage(named: "MakeUpSection"), title: Category.cosmetology),
-        .init(image: UIImage(named: "PermanentSection"), title: Category.permanent)
+        .init(image: UIImage(named: "Nails"), title: Category.nails),
+        .init(image: UIImage(named: "Face Care"), title: Category.faceCare),
+        .init(image: UIImage(named: "Hair Cut"), title: Category.hair),
+        .init(image: UIImage(named: "Massage"), title: Category.massage),
+        .init(image: UIImage(named: "Lashes"), title: Category.lashes),
+        .init(image: UIImage(named: "Cosmetology"), title: Category.cosmetology),
+        .init(image: UIImage(named: "MakeUp"), title: Category.cosmetology),
+        .init(image: UIImage(named: "Permanent"), title: Category.permanent)
     ]
 }
 
