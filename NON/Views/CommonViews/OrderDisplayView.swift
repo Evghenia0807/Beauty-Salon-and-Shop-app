@@ -7,71 +7,44 @@
 
 import SwiftUI
 
-enum ShoppingCategoryName {
-    case salonServices
-    case giftVoucher
-    case beautyProducts
-}
-
 struct OrderDisplayView: View {
-    @State private var isExpanded: Bool = false
-    var category: ShoppingCategoryName
-    
-    private var services: [ServiceNamePrice] {
-        switch category {
-        case .salonServices:
-            return Cart.shared.chosenSalonServices.flatMap { $0.value }
-        case .giftVoucher:
-            return Cart.shared.chosenGiftVoucher.map { ServiceNamePrice(name: "Gift Voucher \($0)", price: 0) }
-        case .beautyProducts:
-            return Cart.shared.chosenShopProducts.map { ServiceNamePrice(name: $0, price: 0) }
-        }
-    }
-
-    private var total: Double {
-        services.reduce(0) { total, service in
-            if let price = Double(service.price.replacingOccurrences(of: " AED", with: "")) {
-                return total + price
-            }
-            return total
-        }
-    }
+    @ObservedObject var viewModel: OrderDisplayViewModel
 
     var body: some View {
         VStack(spacing: 10) {
             HStack {
-                Text(categoryTitle)
+                Text(viewModel.category.rawValue)
                     .foregroundColor(.white)
                 Spacer()
-                if services.isEmpty {
+                if viewModel.services.isEmpty {
                     Text("No purchases")
                         .foregroundColor(.white)
                 } else {
                     VStack(alignment: .trailing) {
-                        Text("Total: \(total, specifier: "%.2f") AED")
+                        Text("Total: \(viewModel.total, specifier: "%.2f") AED")
                             .foregroundColor(.white)
-                        Text("\(services.count) services")
+                        Text("\(viewModel.services.count) services")
                             .foregroundColor(.blue)
                             .font(.footnote)
                     }
                 }
-                if !services.isEmpty {
+                if !viewModel.services.isEmpty {
                     Button(action: {
                         withAnimation {
-                            isExpanded.toggle()
+                            viewModel.isExpanded.toggle()
                         }
                     }) {
-                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        Image(systemName: viewModel.isExpanded ? "chevron.up" : "chevron.down")
                             .foregroundColor(.white)
                     }
                 }
             }
             .padding()
-            .background(Colors.SwiftUIColorType.mainColorPink.value)
+            .background(Colors.SwiftUIColorType.mainColorPink.value.opacity(0.7))
             .cornerRadius(10)
 
-            if isExpanded {
-                switch category {
+            if viewModel.isExpanded {
+                switch viewModel.category {
                 case .salonServices:
                     salonServicesView
                 case .giftVoucher, .beautyProducts:
@@ -81,22 +54,15 @@ struct OrderDisplayView: View {
         }
     }
 
-    private var categoryTitle: String {
-        switch category {
-        case .salonServices:
-            return "Salon Services"
-        case .giftVoucher:
-            return "Gift Voucher"
-        case .beautyProducts:
-            return "Beauty Products"
-        }
-    }
-
     private var salonServicesView: some View {
         VStack {
-            ForEach(services, id: \.name) { service in
+            // Изменено: Изменили ForEach для работы с кортежами (Category, ServiceNamePrice)
+            ForEach(viewModel.services, id: \.1.name) { category, service in
                 HStack {
-                    Image(systemName: "scissors") // Replace with actual image if available
+                    Image(category.rawValue) // Изменено: Используем category.rawValue для получения изображения
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
                     Text(service.name)
                     Spacer()
                     Text("\(service.price)")
@@ -107,7 +73,7 @@ struct OrderDisplayView: View {
                     }
                 }
                 .padding()
-                .background(Colors.SwiftUIColorType.darkGray.value)
+                .background(Colors.SwiftUIColorType.subtitleColorPink.value.opacity(0.5))
                 .cornerRadius(8)
             }
         }

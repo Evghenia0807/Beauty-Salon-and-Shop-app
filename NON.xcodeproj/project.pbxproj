@@ -19,11 +19,11 @@
 		D348777129FEA9C000B23D6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348777029FEA9C000B23D6E /* AppDelegate.swift */; };
 		D348777329FEA9C000B23D6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348777229FEA9C000B23D6E /* SceneDelegate.swift */; };
 		D348777829FEA9C000B23D6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D348777629FEA9C000B23D6E /* Main.storyboard */; };
-		D34A544D2C37F6330091B484 /* DraftCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34A544C2C37F6330091B484 /* DraftCode.swift */; };
 		D35595A12A20E1DF00B3756F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35595A02A20E1DF00B3756F /* Assets.xcassets */; };
 		D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */; };
 		D3629B382B5AE05C0007840B /* BookingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */; };
 		D364B74A2BADCFB800796845 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */; };
+		D37E39002C3C3B220011322B /* OrderDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E38FF2C3C3B220011322B /* OrderDisplayViewModel.swift */; };
 		D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38056B62B4486430075BDFB /* ShoppingViewController.swift */; };
 		D38849562C2344240051C63A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38849552C2344240051C63A /* NotificationCenter.swift */; };
 		D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9F702B61497F00D9132F /* BookingVCModel.swift */; };
@@ -56,10 +56,10 @@
 		D348777229FEA9C000B23D6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D348777729FEA9C000B23D6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D348777E29FEA9C100B23D6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = ../SupportingFiles/Info.plist; sourceTree = "<group>"; };
-		D34A544C2C37F6330091B484 /* DraftCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftCode.swift; sourceTree = "<group>"; };
 		D35595A02A20E1DF00B3756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCollectionViewCell.xib; sourceTree = "<group>"; };
+		D37E38FF2C3C3B220011322B /* OrderDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDisplayViewModel.swift; sourceTree = "<group>"; };
 		D38056B62B4486430075BDFB /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		D38849552C2344240051C63A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		D39A9F702B61497F00D9132F /* BookingVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingVCModel.swift; sourceTree = "<group>"; };
@@ -205,6 +205,7 @@
 			children = (
 				D311BBE82B0E08E700B6CDC5 /* Colors.swift */,
 				D3C2D0292C1ED75400E432CA /* OrderCart.swift */,
+				D37E38FF2C3C3B220011322B /* OrderDisplayViewModel.swift */,
 			);
 			path = CommonModels;
 			sourceTree = "<group>";
@@ -225,7 +226,6 @@
 				D348777229FEA9C000B23D6E /* SceneDelegate.swift */,
 				D35595A02A20E1DF00B3756F /* Assets.xcassets */,
 				D348777E29FEA9C100B23D6E /* Info.plist */,
-				D34A544C2C37F6330091B484 /* DraftCode.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -311,7 +311,6 @@
 				D31CE1072B88ECA60048790C /* GiftVoucherViewController.swift in Sources */,
 				D364B74A2BADCFB800796845 /* ButtonWithShadow.swift in Sources */,
 				D30306582C1C82C2008B9AFB /* BookingCollectionViewManager.swift in Sources */,
-				D34A544D2C37F6330091B484 /* DraftCode.swift in Sources */,
 				D316F4CD2B5AC7EE00E2F60E /* BookingViewController.swift in Sources */,
 				D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */,
 				D3302BA72B83C5240027D6AF /* LogoViewController.swift in Sources */,
@@ -320,6 +319,7 @@
 				D303FEBF2B73A2440066CF56 /* BookingTableCell.swift in Sources */,
 				D348777129FEA9C000B23D6E /* AppDelegate.swift in Sources */,
 				D348777329FEA9C000B23D6E /* SceneDelegate.swift in Sources */,
+				D37E39002C3C3B220011322B /* OrderDisplayViewModel.swift in Sources */,
 				D3224C792B20C831006B3007 /* Logo.swift in Sources */,
 				D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */,
 				D38849562C2344240051C63A /* NotificationCenter.swift in Sources */,

@@ -16,9 +16,9 @@ class CartViewController: LogoViewController {
         
         let swiftUIView = ScrollView {
             VStack(spacing: 20) {
-                OrderDisplayView(category: .salonServices)
-                OrderDisplayView(category: .giftVoucher)
-                OrderDisplayView(category: .beautyProducts)
+                OrderDisplayView(viewModel: OrderDisplayViewModel(category: .salonServices))
+                OrderDisplayView(viewModel: OrderDisplayViewModel(category: .giftVoucher))
+                OrderDisplayView(viewModel: OrderDisplayViewModel(category: .beautyProducts))
             }
             .padding()
             .background(Color.black)
