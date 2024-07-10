@@ -54,12 +54,12 @@ struct OrderDisplayView: View {
         }
     }
 
+    // Добавлен метод для отображения услуг салона с кнопкой удаления
     private var salonServicesView: some View {
         VStack {
-            // Изменено: Изменили ForEach для работы с кортежами (Category, ServiceNamePrice)
             ForEach(viewModel.services, id: \.1.name) { category, service in
                 HStack {
-                    Image(category.rawValue) // Изменено: Используем category.rawValue для получения изображения
+                    Image(category.rawValue)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50, height: 50)
@@ -67,7 +67,10 @@ struct OrderDisplayView: View {
                     Spacer()
                     Text("\(service.price)")
                     Button(action: {
-                        // Remove service action
+                        // Вызов метода удаления услуги с анимацией
+                        withAnimation {
+                            viewModel.removeService(category: category, service: service)
+                        }
                     }) {
                         Image(systemName: "trash")
                     }

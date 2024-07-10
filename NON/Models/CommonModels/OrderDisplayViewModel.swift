@@ -49,4 +49,14 @@ class OrderDisplayViewModel: ObservableObject {
             return total
         }
     }
+    
+    func removeService(category: Category, service: ServiceNamePrice) {
+        withAnimation {
+            Cart.shared.updateCart(category: category, service: service)
+            if services.isEmpty {
+                isExpanded = false
+            }
+            objectWillChange.send() 
+        }
+    }
 }

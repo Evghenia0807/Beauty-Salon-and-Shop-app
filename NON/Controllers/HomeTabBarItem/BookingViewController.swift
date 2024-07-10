@@ -30,9 +30,13 @@ class BookingViewController: LogoViewController {
         setupUIComponents()
         activateConstraints()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateBookButtonState), name: .cartDidUpdate, object: nil) // << Добавлено
-                updateBookButtonState() // << Добавлено
-            }
+        NotificationCenter.default.addObserver(self, selector: #selector(updateBookButtonState), name: .cartDidUpdate, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        servicesTableView.reloadData()
+    }
 
             @objc func updateBookButtonState() {
                 let hasSelectedServices = !Cart.shared.chosenSalonServices.isEmpty
