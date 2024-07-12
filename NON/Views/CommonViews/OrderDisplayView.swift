@@ -21,7 +21,10 @@ struct OrderDisplayView: View {
                         .foregroundColor(.white)
                 } else {
                     VStack(alignment: .trailing) {
-                        Text("Total: \(viewModel.total, specifier: "%.2f") AED")
+                        Text("Total: ")
+                            .foregroundColor(.black)
+                            .fontWeight(.bold) +
+                        Text("\(viewModel.total, specifier: "%.2f") AED")
                             .foregroundColor(.white)
                         Text("\(viewModel.services.count) services")
                             .foregroundColor(.blue)
@@ -54,30 +57,36 @@ struct OrderDisplayView: View {
         }
     }
 
-    // Добавлен метод для отображения услуг салона с кнопкой удаления
     private var salonServicesView: some View {
-        VStack {
+        VStack(spacing: 10) { // Добавляем отступы между элементами
             ForEach(viewModel.services, id: \.1.name) { category, service in
-                HStack {
-                    Image(category.rawValue)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 50, height: 50)
-                    Text(service.name)
-                    Spacer()
-                    Text("\(service.price)")
-                    Button(action: {
-                        // Вызов метода удаления услуги с анимацией
-                        withAnimation {
-                            viewModel.removeService(category: category, service: service)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.black)
+                        .shadow(color: Colors.SwiftUIColorType.darkGray.value, radius: 1.5, x: 0, y: 0)
+                    HStack {
+                        Image(category.rawValue)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 50)
+                        Text(service.name)
+                            .foregroundColor(.white)
+                        Spacer()
+                        Text("\(service.price)")
+                            .foregroundColor(Colors.SwiftUIColorType.mainColorPink.value)
+                        Button(action: {
+                            withAnimation {
+                                viewModel.removeService(category: category, service: service)
+                            }
+                        }) {
+                            Image(systemName: "trash")
+                                .foregroundColor(Colors.SwiftUIColorType.darkGray.value)
                         }
-                    }) {
-                        Image(systemName: "trash")
                     }
+                    .padding()
                 }
-                .padding()
-                .background(Colors.SwiftUIColorType.subtitleColorPink.value.opacity(0.5))
-                .cornerRadius(8)
+                .padding(.horizontal, 5) 
+                .padding(.vertical, 2)
             }
         }
         .background(Color.black)
@@ -86,7 +95,7 @@ struct OrderDisplayView: View {
         .transition(.opacity)
         .padding(.bottom, 20)
     }
-
+    
     private var genericEmptyView: some View {
         VStack {
             Text("No services selected")
@@ -100,3 +109,4 @@ struct OrderDisplayView: View {
         .padding(.bottom, 20)
     }
 }
+

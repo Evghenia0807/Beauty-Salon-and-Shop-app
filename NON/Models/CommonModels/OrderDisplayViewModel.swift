@@ -24,7 +24,6 @@ class OrderDisplayViewModel: ObservableObject {
         self.category = category
     }
 
-    // Изменено: Обновили свойство services для возвращения кортежей (Category, ServiceNamePrice)
     var services: [(Category, ServiceNamePrice)] {
         switch category {
         case .salonServices:
@@ -41,7 +40,6 @@ class OrderDisplayViewModel: ObservableObject {
     }
 
     var total: Double {
-        // Изменено: Изменили reduce для работы с кортежами (Category, ServiceNamePrice)
         services.reduce(0) { total, categoryService in
             if let price = Double(categoryService.1.price.replacingOccurrences(of: " AED", with: "")) {
                 return total + price
@@ -56,7 +54,7 @@ class OrderDisplayViewModel: ObservableObject {
             if services.isEmpty {
                 isExpanded = false
             }
-            objectWillChange.send() 
+            objectWillChange.send()
         }
     }
 }

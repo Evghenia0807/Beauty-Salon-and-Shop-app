@@ -158,6 +158,9 @@ class ButtonWithShadow: UIView {
         guard let goToIdentifier = goToIdentifier else {return}
         guard let controller = findVC() else {return}
         controller.performSegue(withIdentifier: goToIdentifier, sender: nil)
+        
+        gradientLayer.colors = [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor, #colorLiteral(red: 0.09121344239, green: 0.0176126454, blue: 0.05065562576, alpha: 0.130924048).cgColor, #colorLiteral(red: 0.1260530949, green: 0.02903844602, blue: 0.0775596872, alpha: 0.1470146937).cgColor, #colorLiteral(red: 0.1666823626, green: 0.03838055208, blue: 0.1042519435, alpha: 0.2171719784).cgColor, #colorLiteral(red: 0.3153567016, green: 0.05996914953, blue: 0.1897078753, alpha: 0.4067673842).cgColor,  #colorLiteral(red: 0.491002202, green: 0.08269806951, blue: 0.2915512919, alpha: 0.5).cgColor, #colorLiteral(red: 0.6323029399, green: 0.08555687219, blue: 0.3645603657, alpha: 0.7098768626).cgColor, #colorLiteral(red: 0.7606634498, green: 0.09257154912, blue: 0.4276409745, alpha: 0.8934706126).cgColor, #colorLiteral(red: 0.8294126391, green: 0.09603773803, blue: 0.4644299746, alpha: 1).cgColor]
+
     }
 
 

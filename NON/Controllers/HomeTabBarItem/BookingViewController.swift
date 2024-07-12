@@ -36,6 +36,7 @@ class BookingViewController: LogoViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         servicesTableView.reloadData()
+        updateBookButtonState()
     }
 
             @objc func updateBookButtonState() {
@@ -44,7 +45,7 @@ class BookingViewController: LogoViewController {
             }
 
             deinit {
-                NotificationCenter.default.removeObserver(self, name: .cartDidUpdate, object: nil) // << Добавлено
+                NotificationCenter.default.removeObserver(self, name: .cartDidUpdate, object: nil)
             }
     
     
