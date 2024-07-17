@@ -194,7 +194,7 @@
         <!--Cart View Controller-->
         <scene sceneID="MxR-si-gs3">
             <objects>
-                <viewController id="50D-EY-l4O" customClass="CartViewController" customModule="NON" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="50D-EY-l4O" customClass="CartViewController" customModule="NON" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MW9-MZ-erc">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

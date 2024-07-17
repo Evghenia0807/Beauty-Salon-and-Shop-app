@@ -26,6 +26,8 @@
 		D37E39002C3C3B220011322B /* OrderDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37E38FF2C3C3B220011322B /* OrderDisplayViewModel.swift */; };
 		D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38056B62B4486430075BDFB /* ShoppingViewController.swift */; };
 		D38849562C2344240051C63A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38849552C2344240051C63A /* NotificationCenter.swift */; };
+		D38D70172C45905600299BE1 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D70162C45905600299BE1 /* CartView.swift */; };
+		D38D70192C4590EC00299BE1 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D70182C4590EC00299BE1 /* CartViewModel.swift */; };
 		D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9F702B61497F00D9132F /* BookingVCModel.swift */; };
 		D3ADFA2A2B3C2B700022E93B /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADFA292B3C2B700022E93B /* View + Extension.swift */; };
 		D3AF85A22C285D230099B615 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF85A12C285D230099B615 /* CartViewController.swift */; };
@@ -62,6 +64,8 @@
 		D37E38FF2C3C3B220011322B /* OrderDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDisplayViewModel.swift; sourceTree = "<group>"; };
 		D38056B62B4486430075BDFB /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		D38849552C2344240051C63A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		D38D70162C45905600299BE1 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		D38D70182C4590EC00299BE1 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		D39A9F702B61497F00D9132F /* BookingVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingVCModel.swift; sourceTree = "<group>"; };
 		D3ADFA292B3C2B700022E93B /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		D3AF85A12C285D230099B615 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				D3224C782B20C831006B3007 /* Logo.swift */,
 				D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */,
 				D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */,
+				D38D70162C45905600299BE1 /* CartView.swift */,
 			);
 			path = CommonViews;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				D311BBE82B0E08E700B6CDC5 /* Colors.swift */,
 				D3C2D0292C1ED75400E432CA /* OrderCart.swift */,
 				D37E38FF2C3C3B220011322B /* OrderDisplayViewModel.swift */,
+				D38D70182C4590EC00299BE1 /* CartViewModel.swift */,
 			);
 			path = CommonModels;
 			sourceTree = "<group>";
@@ -319,7 +325,9 @@
 				D303FEBF2B73A2440066CF56 /* BookingTableCell.swift in Sources */,
 				D348777129FEA9C000B23D6E /* AppDelegate.swift in Sources */,
 				D348777329FEA9C000B23D6E /* SceneDelegate.swift in Sources */,
+				D38D70172C45905600299BE1 /* CartView.swift in Sources */,
 				D37E39002C3C3B220011322B /* OrderDisplayViewModel.swift in Sources */,
+				D38D70192C4590EC00299BE1 /* CartViewModel.swift in Sources */,
 				D3224C792B20C831006B3007 /* Logo.swift in Sources */,
 				D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */,
 				D38849562C2344240051C63A /* NotificationCenter.swift in Sources */,

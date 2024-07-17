@@ -70,7 +70,7 @@ struct OrderDisplayView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
                         Text(service.name)
-                            .foregroundColor(.white)
+                            .foregroundColor(.white .opacity(0.7))
                         Spacer()
                         Text("\(service.price)")
                             .foregroundColor(Colors.SwiftUIColorType.mainColorPink.value)
@@ -109,4 +109,5 @@ struct OrderDisplayView: View {
         .padding(.bottom, 20)
     }
 }
+
 
