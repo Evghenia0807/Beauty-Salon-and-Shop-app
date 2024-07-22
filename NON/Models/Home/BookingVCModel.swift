@@ -1,9 +1,9 @@
 //
 //  ServicesCategory.swift
 //  NON
-//
 //  Created by Evghenia Nedbailova on 24/01/2024.
 //
+
 // Category (Nails,HairCut..)
 // Section (Manicure,Pedicure..)
 // Service (Gel polish ... price)

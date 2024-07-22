@@ -7,17 +7,20 @@
 
 
 
-import Foundation
+import UIKit
+import SwiftUI
+import Combine
 
-class Cart {
+class Cart: ObservableObject {
     static let shared = Cart()
+    
     private init() {
         loadFromUserDefaults()
     }
 
-    var chosenSalonServices: [Category: [ServiceNamePrice]] = [:]
-    var chosenGiftVoucher: [Int] = []
-    var chosenShopProducts: [String] = []
+    @Published var chosenSalonServices: [Category: [ServiceNamePrice]] = [:]
+    @Published var chosenGiftVoucher: [Int] = []
+    @Published var chosenShopProducts: [String] = []
 
     func updateCart(category: Category, service: ServiceNamePrice) {
         var existingServices = chosenSalonServices[category] ?? []
@@ -41,10 +44,28 @@ class Cart {
         saveToUserDefaults()
     }
 
+    func addGiftVoucher(_ voucher: Int) {
+        chosenGiftVoucher.append(voucher)
+        NotificationCenter.default.post(name: .cartDidUpdate, object: nil)
+        saveToUserDefaults()
+    }
+
+    func addShopProduct(_ product: String) {
+        chosenShopProducts.append(product)
+        NotificationCenter.default.post(name: .cartDidUpdate, object: nil)
+        saveToUserDefaults()
+    }
+
     private func saveToUserDefaults() {
         let defaults = UserDefaults.standard
         if let encoded = try? JSONEncoder().encode(chosenSalonServices) {
             defaults.set(encoded, forKey: "chosenServices")
+        }
+        if let encodedVouchers = try? JSONEncoder().encode(chosenGiftVoucher) {
+            defaults.set(encodedVouchers, forKey: "chosenVouchers")
+        }
+        if let encodedProducts = try? JSONEncoder().encode(chosenShopProducts) {
+            defaults.set(encodedProducts, forKey: "chosenProducts")
         }
     }
 
@@ -54,6 +75,14 @@ class Cart {
            let decoded = try? JSONDecoder().decode([Category: [ServiceNamePrice]].self, from: savedData) {
             chosenSalonServices = decoded
         }
+        if let savedVouchers = defaults.data(forKey: "chosenVouchers"),
+           let decodedVouchers = try? JSONDecoder().decode([Int].self, from: savedVouchers) {
+            chosenGiftVoucher = decodedVouchers
+        }
+        if let savedProducts = defaults.data(forKey: "chosenProducts"),
+           let decodedProducts = try? JSONDecoder().decode([String].self, from: savedProducts) {
+            chosenShopProducts = decodedProducts
+        }
     }
 
     func isSelected(category: Category, service: ServiceNamePrice) -> Bool {
@@ -61,6 +90,3 @@ class Cart {
         return existingServices.contains(where: { $0.name == service.name })
     }
 }
-
-
-

@@ -5,8 +5,9 @@
 //  Created by Evghenia Nedbailova on 15/07/2024.
 //
 
+
 import Combine
-import Foundation
+import UIKit
 
 class CartViewModel: ObservableObject {
     @Published var promoCode: String = ""
@@ -51,4 +52,3 @@ class CartViewModel: ObservableObject {
         print("Checkout with total: \(finalTotal) AED")
     }
 }
-
