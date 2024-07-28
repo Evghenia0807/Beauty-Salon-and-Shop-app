@@ -4,7 +4,6 @@
 //
 //  Created by Evghenia Nedbailova on 23/06/2024.
 //
-
 import UIKit
 import SwiftUI
 import Combine
@@ -12,7 +11,7 @@ import Combine
 class CartViewController: LogoViewController {
     static let identifier = "CartViewController"
     
-    private var cartViewModel = CartViewModel()
+    private var cartModel = CartModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +20,7 @@ class CartViewController: LogoViewController {
     }
 
     private func setupUI() {
-        let swiftUIView = CartView().environmentObject(cartViewModel)
+        let swiftUIView = CartView().environmentObject(cartModel)
 
         let hostingController = UIHostingController(rootView: swiftUIView)
         
@@ -38,4 +37,3 @@ class CartViewController: LogoViewController {
         ])
     }
 }
-

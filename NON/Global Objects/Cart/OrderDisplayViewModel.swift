@@ -51,9 +51,9 @@ class OrderDisplayViewModel: ObservableObject {
     func removeService(category: Category, service: ServiceNamePrice) {
         withAnimation {
             Cart.shared.updateCart(category: category, service: service)
-            if services.isEmpty {
+            if Cart.shared.chosenSalonServices.isEmpty {
                 isExpanded = false
-            }
+            } 
             objectWillChange.send()
         }
     }
