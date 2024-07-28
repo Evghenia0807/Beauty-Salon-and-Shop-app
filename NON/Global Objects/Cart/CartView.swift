@@ -18,9 +18,9 @@ struct CartView: View {
                         .foregroundColor(Colors.SwiftUIColorType.almostBlack.value)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                    OrderDisplayView(viewModel: OrderDisplayViewModel(category: .salonServices))
-                    OrderDisplayView(viewModel: OrderDisplayViewModel(category: .giftVoucher))
-                    OrderDisplayView(viewModel: OrderDisplayViewModel(category: .beautyProducts))
+                    OrderDisplayView(category: .salonServices)
+                    OrderDisplayView(category: .giftVoucher)
+                    OrderDisplayView(category: .beautyProducts)
                     
                     promoCodeView
                 }

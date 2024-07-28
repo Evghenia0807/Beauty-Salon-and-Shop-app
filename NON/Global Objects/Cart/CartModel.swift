@@ -10,11 +10,11 @@ import SwiftUI
 import Combine
 
 class CartModel: ObservableObject {
-    @Published var totalWithoutDiscount = 0.0
+    @Published var totalWithoutDiscount = 0
     @Published var finalTotal = 0.0
     @Published var promoCode: String = ""
     @Published var discount: Double = 0.0
-    let deliveryFee: Double = 20.0
+    var deliveryFee: Double = 0
     let taxRate: Double = 5.0
 
     private var cancellables = Set<AnyCancellable>()
@@ -35,30 +35,14 @@ class CartModel: ObservableObject {
     }
     
     func calculateTotalNoDiscount() {
-        let totalServices = Cart.shared.chosenSalonServices.flatMap { $0.value }.reduce(0.0) { total, service in
-            if let price = Double(service.price.replacingOccurrences(of: " AED", with: "")) {
-                return total + price
-            }
-            return total
-        }
-        
-        let totalVouchers = Cart.shared.chosenGiftVoucher.reduce(0.0) { $0 + Double($1) }
-        
-        let totalProducts = Cart.shared.chosenShopProducts.reduce(0.0) { (total, priceString) -> Double in
-            if let price = Double(priceString.replacingOccurrences(of: " AED", with: "")) {
-                return total + price
-            }
-            return total
-        }
-        
-        let total = totalServices + totalVouchers + totalProducts
+        let total = Cart.shared.chosenSalonServices.flatMap{$0.value}.compactMap{$0.price}.reduce(0,+)
         totalWithoutDiscount = total
     }
     
     func calculateFinalTotal() {
         let subtotal = Double(totalWithoutDiscount)
         let discountAmount = subtotal * discount / 100
-        let delivery = hasDeliveryItems ? deliveryFee : 0
+        let delivery = hasDeliveryItems ? 20.0 : 0
         let tax = (subtotal - discountAmount) * taxRate / 100
         let total = subtotal - discountAmount + delivery + tax
         finalTotal = total

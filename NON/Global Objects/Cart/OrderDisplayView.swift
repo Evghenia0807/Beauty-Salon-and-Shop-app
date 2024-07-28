@@ -7,16 +7,30 @@
 
 import SwiftUI
 
+enum ShoppingCategoryName: String {
+    case salonServices = "Salon Services"
+    case giftVoucher = "Gift Voucher"
+    case beautyProducts = "Beauty Products"
+}
+
 struct OrderDisplayView: View {
-    @ObservedObject var viewModel: OrderDisplayViewModel
+    var category: ShoppingCategoryName
+    @State private var localServices: [(Category, ServiceNamePrice)]
+    @State private var isExpanded: Bool = false
+    @EnvironmentObject var cartModel: CartModel
+
+    init(category: ShoppingCategoryName) {
+        self.category = category
+        self._localServices = State(initialValue: OrderDisplayView.loadServices(for: category))
+    }
 
     var body: some View {
         VStack(spacing: 10) {
             HStack {
-                Text(viewModel.category.rawValue)
+                Text(category.rawValue)
                     .foregroundColor(.white)
                 Spacer()
-                if viewModel.services.isEmpty {
+                if localServices.isEmpty {
                     Text("No purchases")
                         .foregroundColor(.white)
                 } else {
@@ -24,20 +38,20 @@ struct OrderDisplayView: View {
                         Text("Total: ")
                             .foregroundColor(.black)
                             .fontWeight(.bold) +
-                        Text("\(viewModel.total, specifier: "%.2f") AED")
+                        Text("\(cartModel.totalWithoutDiscount) AED")
                             .foregroundColor(.white)
-                        Text("\(viewModel.services.count) services")
+                        Text("\(localServices.count) services")
                             .foregroundColor(.blue)
                             .font(.footnote)
                     }
                 }
-                if !viewModel.services.isEmpty {
+                if !localServices.isEmpty {
                     Button(action: {
                         withAnimation {
-                            viewModel.isExpanded.toggle()
+                            isExpanded.toggle()
                         }
                     }) {
-                        Image(systemName: viewModel.isExpanded ? "chevron.up" : "chevron.down")
+                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                             .foregroundColor(.white)
                     }
                 }
@@ -46,20 +60,24 @@ struct OrderDisplayView: View {
             .background(Colors.SwiftUIColorType.mainColorPink.value.opacity(0.7))
             .cornerRadius(10)
 
-            if viewModel.isExpanded {
-                switch viewModel.category {
-                case .salonServices:
-                    salonServicesView
-                case .giftVoucher, .beautyProducts:
-                    genericEmptyView
-                }
+            if isExpanded {
+                categoryView
             }
         }
     }
 
+    private var categoryView: some View {
+        switch category {
+        case .salonServices:
+            return AnyView(salonServicesView)
+        case .giftVoucher, .beautyProducts:
+            return AnyView(genericEmptyView)
+        }
+    }
+
     private var salonServicesView: some View {
-        VStack(spacing: 10) { // Добавляем отступы между элементами
-            ForEach(viewModel.services, id: \.1.name) { category, service in
+        VStack(spacing: 10) {
+            ForEach(localServices, id: \.1.name) { category, service in
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.black)
@@ -70,13 +88,13 @@ struct OrderDisplayView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
                         Text(service.name)
-                            .foregroundColor(.white .opacity(0.7))
+                            .foregroundColor(.white.opacity(0.7))
                         Spacer()
-                        Text("\(service.price)")
+                        Text("\(service.priceString)")
                             .foregroundColor(Colors.SwiftUIColorType.mainColorPink.value)
                         Button(action: {
                             withAnimation {
-                                viewModel.removeService(category: category, service: service)
+                                removeService(category: category, service: service)
                             }
                         }) {
                             Image(systemName: "trash")
@@ -85,7 +103,7 @@ struct OrderDisplayView: View {
                     }
                     .padding()
                 }
-                .padding(.horizontal, 5) 
+                .padding(.horizontal, 5)
                 .padding(.vertical, 2)
             }
         }
@@ -95,7 +113,7 @@ struct OrderDisplayView: View {
         .transition(.opacity)
         .padding(.bottom, 20)
     }
-    
+
     private var genericEmptyView: some View {
         VStack {
             Text("No services selected")
@@ -108,6 +126,27 @@ struct OrderDisplayView: View {
         .transition(.opacity)
         .padding(.bottom, 20)
     }
+
+    private func removeService(category: Category, service: ServiceNamePrice) {
+        Cart.shared.updateCart(category: category, service: service)
+        localServices.removeAll { $0.1.name == service.name }
+        if localServices.isEmpty {
+            isExpanded = false
+        }
+    }
+
+    private static func loadServices(for category: ShoppingCategoryName) -> [(Category, ServiceNamePrice)] {
+        switch category {
+        case .salonServices:
+            return Cart.shared.chosenSalonServices.flatMap { category, services in
+                services.map { service in
+                    (category, service)
+                }
+            }
+        case .giftVoucher:
+            return []
+        case .beautyProducts:
+            return []
+        }
+    }
 }
-
-

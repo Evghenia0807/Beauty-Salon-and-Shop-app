@@ -49,7 +49,7 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         let service = section.serviceNamePrice[indexPath.row]
                 
                 cell.serviceName.text = service.name
-                cell.price.text = service.price
+        cell.price.text = service.priceString
                 cell.category = currentCategory
                 cell.section = section
                 cell.service = service

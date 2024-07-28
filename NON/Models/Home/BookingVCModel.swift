@@ -56,16 +56,19 @@ struct Sections: Codable{
     }
 
 
-struct ServiceNamePrice: Codable{
+struct ServiceNamePrice: Codable {
     let name: String
-    let price: String
+    let price: Int
 
     init(name: String, price: Int) {
         self.name = name
-        self.price = "\(price) AED"
+        self.price = price
+    }
+    
+    var priceString: String {
+        return "\(price) AED"
     }
 }
-
 
 
 
