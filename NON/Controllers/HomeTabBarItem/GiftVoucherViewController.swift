@@ -21,7 +21,7 @@ class GiftVoucherViewController: LogoViewController {
     @IBOutlet weak var trailingConstrait2: NSLayoutConstraint!
     @IBOutlet weak var trailingConstrait3: NSLayoutConstraint!
     @IBOutlet weak var subtitleText: UILabel!
-    var buyButton: ButtonWithShadow!
+    var buyButton = ButtonWithShadow()
     
     
     var largeText: [UILabel] = []
@@ -50,7 +50,7 @@ class GiftVoucherViewController: LogoViewController {
     
     
     private func buyButtonSetup(){
-        buyButton = ButtonWithShadow(title: "Purchase", width: 200, height: 80, controller: self, goToIdentifier: HomeViewController.identifier)
+        buyButton = ButtonWithShadow(title: "Purchase", width: 200, height: 80,  goToIdentifier: HomeViewController.identifier)
         view.addSubview(buyButton)
         buyButton.alpha = 0.4
         buyButton.translatesAutoresizingMaskIntoConstraints = false
@@ -115,14 +115,3 @@ class GiftVoucherViewController: LogoViewController {
 
 }
 
-
-
-//    BEST PRESENT
-//    FOR YOUR  FRIEND
-//    NO Need to think about present anymore.
-//    Buy a gift voucher for the desired amount
-//     from 500 aed in incredibly beautiful packaging
-//    and leave it to your friend to decide
-//    what she will spend it on in our salon,
-//    massage, manicure or quality beauty products
-//    in our online store
