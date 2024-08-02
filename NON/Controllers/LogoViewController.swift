@@ -25,7 +25,7 @@ class LogoViewController: UIViewController {
         let label = UILabel()
         view.backgroundColor = .black
         label.font = UIFont(name: "Optima", size: 30)
-        label.textColor = UIColor(cgColor: Colors.mainColorPink)
+        label.textColor = Colors.UIColorType.mainColorPink.value
         label.textAlignment = .center
         label.text = "NON"
         conteiner.addSubview(label)
@@ -33,6 +33,10 @@ class LogoViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: conteiner.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: conteiner.centerYAnchor).isActive = true
+        
+        let backButton = UIBarButtonItem()
+            backButton.title = ""
+            self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
     }
     

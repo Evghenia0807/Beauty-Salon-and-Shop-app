@@ -1,9 +1,9 @@
 //
 //  ServicesCategory.swift
 //  NON
-//
 //  Created by Evghenia Nedbailova on 24/01/2024.
 //
+
 // Category (Nails,HairCut..)
 // Section (Manicure,Pedicure..)
 // Service (Gel polish ... price)
@@ -26,19 +26,19 @@ struct CollectionDataModel: Hashable{
     let title: Category
 
    static var sections: [Self] = [
-        .init(image: UIImage(named: "NailsSection"), title: Category.nails),
-        .init(image: UIImage(named: "FaceCareSection"), title: Category.faceCare),
-        .init(image: UIImage(named: "HairCutSection"), title: Category.hair),
-        .init(image: UIImage(named: "MassageSection"), title: Category.massage),
-        .init(image: UIImage(named: "LashesSection"), title: Category.lashes),
-        .init(image: UIImage(named: "CosmetologySection"), title: Category.cosmetology),
-        .init(image: UIImage(named: "MakeUpSection"), title: Category.cosmetology),
-        .init(image: UIImage(named: "PermanentSection"), title: Category.permanent)
+        .init(image: UIImage(named: "Nails"), title: Category.nails),
+        .init(image: UIImage(named: "Face Care"), title: Category.faceCare),
+        .init(image: UIImage(named: "Hair Cut"), title: Category.hair),
+        .init(image: UIImage(named: "Massage"), title: Category.massage),
+        .init(image: UIImage(named: "Lashes"), title: Category.lashes),
+        .init(image: UIImage(named: "Cosmetology"), title: Category.cosmetology),
+        .init(image: UIImage(named: "MakeUp"), title: Category.cosmetology),
+        .init(image: UIImage(named: "Permanent"), title: Category.permanent)
     ]
 }
 
 
-enum Category: String{
+enum Category: String, Codable{
     case nails = "Nails"
     case hair = "Hair Cut"
     case lashes = "Lashes"
@@ -50,22 +50,25 @@ enum Category: String{
 }
 
 
-struct Sections{
+struct Sections: Codable{
     let sectionName: String
-    let serviceNamePrice: [ServiceNamePrice]
+    var serviceNamePrice: [ServiceNamePrice]
     }
 
 
-struct ServiceNamePrice{
+struct ServiceNamePrice: Codable {
     let name: String
-    let price: String
+    let price: Int
 
     init(name: String, price: Int) {
         self.name = name
-        self.price = "\(price) AED"
+        self.price = price
+    }
+    
+    var priceString: String {
+        return "\(price) AED"
     }
 }
-
 
 
 

@@ -37,7 +37,7 @@ class Logo: UILabel {
         
         let titleAtributes: [NSAttributedString.Key: Any] =
         [ .font: UIFont.systemFont(ofSize: textSize),
-          .foregroundColor: Colors.mainColorPink,
+          .foregroundColor: Colors.UIColorType.mainColorPink.value,
         ]
         
         let subtitleAtributes: [NSAttributedString.Key: Any] =

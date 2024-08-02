@@ -10,6 +10,7 @@ import UIKit
 class BookingTableCell: UITableViewCell {
 
    static let indentifier = "BookingTableCell"
+    
     let accessoryPlus = UIImageView(image: UIImage(systemName: "plus"))
     var serviceName = UILabel()
     var price = UILabel()
@@ -18,6 +19,9 @@ class BookingTableCell: UITableViewCell {
             updateAccessoryView()
         }
     }
+    var category: Category?
+    var section: Sections?
+    var service: ServiceNamePrice?
    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,7 +54,7 @@ class BookingTableCell: UITableViewCell {
         
         backgroundColor = .black
         serviceName.textColor = .white
-        price.textColor = UIColor(cgColor: Colors.subtitleColorPink)
+        price.textColor = Colors.UIColorType.subtitleColorPink.value
     }
     
     func activateConstraints(){
@@ -67,10 +71,13 @@ class BookingTableCell: UITableViewCell {
     }
     
     func updateAccessoryView() {
-        accessoryPlus.tintColor = serviceIsChosen ? UIColor(cgColor: Colors.mainColorPink) : UIColor(cgColor: Colors.darkGray)
+        accessoryPlus.tintColor = serviceIsChosen ? Colors.UIColorType.mainColorPink.value : Colors.UIColorType.darkGray.value
     }
     
     @objc func accessoryTapped() {
         serviceIsChosen.toggle()
-        }
+        guard let category = category, let service = service else { return }
+
+                Cart.shared.updateCart(category: category, service: service)
+    }
 }

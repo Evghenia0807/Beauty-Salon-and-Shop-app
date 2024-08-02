@@ -36,15 +36,15 @@ class BookingCollectionViewCell: UICollectionViewCell {
     
     func selectedBookingCell(index: IndexPath){
         fillBookingCell(index: index)
-        conteinerView.dropShadow(color: Colors.mainColorPink, opacity: 0.12, radius: 2)
-        cellPic.layer.borderColor = Colors.mainColorPink
+        conteinerView.dropShadow(color: Colors.CGColorType.mainColorPink.value, opacity: 0.12, radius: 2)
+        cellPic.layer.borderColor = Colors.CGColorType.mainColorPink.value
         cellPic.layer.borderWidth = 0.25
     }
     
     func deselectedBookingCell(index: IndexPath){
         fillBookingCell(index: index)
-        conteinerView.dropShadow(color: Colors.subtitleColorPink, opacity: 0.12, radius: 2)
-        cellPic.layer.borderColor = Colors.subtitleColorPink
+        conteinerView.dropShadow(color: Colors.CGColorType.subtitleColorPink.value, opacity: 0.12, radius: 2)
+        cellPic.layer.borderColor = Colors.CGColorType.subtitleColorPink.value
         cellPic.layer.borderWidth = 0.17
     }
 }

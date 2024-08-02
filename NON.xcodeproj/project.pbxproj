@@ -24,15 +24,22 @@
 		D3629B382B5AE05C0007840B /* BookingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */; };
 		D364B74A2BADCFB800796845 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */; };
 		D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38056B62B4486430075BDFB /* ShoppingViewController.swift */; };
+		D38849562C2344240051C63A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38849552C2344240051C63A /* NotificationCenter.swift */; };
+		D38A60062C4D1E07000ED32F /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A60052C4D1E07000ED32F /* CartModel.swift */; };
+		D38A60092C4E6518000ED32F /* CartSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A60082C4E6518000ED32F /* CartSummaryView.swift */; };
+		D38D70172C45905600299BE1 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D70162C45905600299BE1 /* CartView.swift */; };
 		D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9F702B61497F00D9132F /* BookingVCModel.swift */; };
 		D3ADFA2A2B3C2B700022E93B /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADFA292B3C2B700022E93B /* View + Extension.swift */; };
+		D3AF85A22C285D230099B615 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF85A12C285D230099B615 /* CartViewController.swift */; };
 		D3C103682A73D63B00A23C02 /* AboutUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C103672A73D63B00A23C02 /* AboutUs.storyboard */; };
 		D3C1036A2A73D85C00A23C02 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */; };
 		D3C1036C2A73D9A300A23C02 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C1036B2A73D9A300A23C02 /* Account.storyboard */; };
 		D3C1036E2A73DACB00A23C02 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1036D2A73DACB00A23C02 /* AccountViewController.swift */; };
+		D3C2D02A2C1ED75400E432CA /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2D0292C1ED75400E432CA /* Cart.swift */; };
 		D3CCE4CC2A65953C00B0DBCC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CCE4CB2A65953C00B0DBCC /* Home.storyboard */; };
 		D3DCEDC12A3A19BC008F55AA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DCEDC02A3A19BC008F55AA /* HomeViewController.swift */; };
 		D3E742BE2B387DBD0037C350 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E742BD2B387DBD0037C350 /* LaunchScreen.storyboard */; };
+		D3FAF8402C2C3930009F969A /* OrderDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,15 +62,22 @@
 		D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCollectionViewCell.xib; sourceTree = "<group>"; };
 		D38056B62B4486430075BDFB /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
+		D38849552C2344240051C63A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
+		D38A60052C4D1E07000ED32F /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		D38A60082C4E6518000ED32F /* CartSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartSummaryView.swift; sourceTree = "<group>"; };
+		D38D70162C45905600299BE1 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		D39A9F702B61497F00D9132F /* BookingVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingVCModel.swift; sourceTree = "<group>"; };
 		D3ADFA292B3C2B700022E93B /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
+		D3AF85A12C285D230099B615 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D3C103672A73D63B00A23C02 /* AboutUs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutUs.storyboard; sourceTree = "<group>"; };
 		D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		D3C1036B2A73D9A300A23C02 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		D3C1036D2A73DACB00A23C02 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		D3C2D0292C1ED75400E432CA /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		D3CCE4CB2A65953C00B0DBCC /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		D3DCEDC02A3A19BC008F55AA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D3E742BD2B387DBD0037C350 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +152,9 @@
 		D348776F29FEA9C000B23D6E /* NON */ = {
 			isa = PBXGroup;
 			children = (
-				D3ADFA282B3C2ADD0022E93B /* Extensions */,
 				D3FF2BE12AA8803D009F280A /* Application */,
+				D3ADFA282B3C2ADD0022E93B /* Extensions */,
+				D38A60042C4D1C26000ED32F /* Global Objects */,
 				D3E742BF2B3880870037C350 /* Controllers */,
 				D311BBE52B0E014500B6CDC5 /* Views */,
 				D311BBEA2B139F1400B6CDC5 /* Models */,
@@ -147,10 +162,32 @@
 			path = NON;
 			sourceTree = "<group>";
 		};
+		D38A60042C4D1C26000ED32F /* Global Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D38A60072C4E646F000ED32F /* Cart */,
+			);
+			path = "Global Objects";
+			sourceTree = "<group>";
+		};
+		D38A60072C4E646F000ED32F /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				D3C2D0292C1ED75400E432CA /* Cart.swift */,
+				D38A60052C4D1E07000ED32F /* CartModel.swift */,
+				D3AF85A12C285D230099B615 /* CartViewController.swift */,
+				D3FAF83F2C2C3930009F969A /* OrderDisplayView.swift */,
+				D38D70162C45905600299BE1 /* CartView.swift */,
+				D38A60082C4E6518000ED32F /* CartSummaryView.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
 		D3ADFA282B3C2ADD0022E93B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D3ADFA292B3C2B700022E93B /* View + Extension.swift */,
+				D38849552C2344240051C63A /* NotificationCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -299,16 +336,23 @@
 				D316F4CD2B5AC7EE00E2F60E /* BookingViewController.swift in Sources */,
 				D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */,
 				D3302BA72B83C5240027D6AF /* LogoViewController.swift in Sources */,
+				D38A60062C4D1E07000ED32F /* CartModel.swift in Sources */,
 				D3C1036E2A73DACB00A23C02 /* AccountViewController.swift in Sources */,
 				D3ADFA2A2B3C2B700022E93B /* View + Extension.swift in Sources */,
 				D303FEBF2B73A2440066CF56 /* BookingTableCell.swift in Sources */,
 				D348777129FEA9C000B23D6E /* AppDelegate.swift in Sources */,
 				D348777329FEA9C000B23D6E /* SceneDelegate.swift in Sources */,
+				D38D70172C45905600299BE1 /* CartView.swift in Sources */,
 				D3224C792B20C831006B3007 /* Logo.swift in Sources */,
 				D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */,
+				D38849562C2344240051C63A /* NotificationCenter.swift in Sources */,
+				D3C2D02A2C1ED75400E432CA /* Cart.swift in Sources */,
+				D3AF85A22C285D230099B615 /* CartViewController.swift in Sources */,
 				D30EBDAC2B26144900AA790B /* HomeAutoSliderModel.swift in Sources */,
 				D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */,
+				D3FAF8402C2C3930009F969A /* OrderDisplayView.swift in Sources */,
 				D3DCEDC12A3A19BC008F55AA /* HomeViewController.swift in Sources */,
+				D38A60092C4E6518000ED32F /* CartSummaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
