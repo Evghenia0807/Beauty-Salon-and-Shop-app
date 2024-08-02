@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30306582C1C82C2008B9AFB /* BookingCollectionViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30306572C1C82C2008B9AFB /* BookingCollectionViewManager.swift */; };
 		D303FEBD2B7150EB0066CF56 /* BookingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303FEBC2B7150EB0066CF56 /* BookingTableView.swift */; };
 		D303FEBF2B73A2440066CF56 /* BookingTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303FEBE2B73A2440066CF56 /* BookingTableCell.swift */; };
-		D3051E5F2AE938F900C8175E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3051E5E2AE938F900C8175E /* HomeCollectionViewCell.swift */; };
 		D30EBDAC2B26144900AA790B /* HomeAutoSliderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EBDAB2B26144900AA790B /* HomeAutoSliderModel.swift */; };
 		D311BBE92B0E08E700B6CDC5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D311BBE82B0E08E700B6CDC5 /* Colors.swift */; };
 		D316F4CD2B5AC7EE00E2F60E /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316F4CC2B5AC7EE00E2F60E /* BookingViewController.swift */; };
@@ -24,7 +24,7 @@
 		D3629B382B5AE05C0007840B /* BookingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */; };
 		D364B74A2BADCFB800796845 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */; };
 		D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38056B62B4486430075BDFB /* ShoppingViewController.swift */; };
-		D39A9F712B61497F00D9132F /* BookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9F702B61497F00D9132F /* BookingModel.swift */; };
+		D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A9F702B61497F00D9132F /* BookingVCModel.swift */; };
 		D3ADFA2A2B3C2B700022E93B /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADFA292B3C2B700022E93B /* View + Extension.swift */; };
 		D3C103682A73D63B00A23C02 /* AboutUs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C103672A73D63B00A23C02 /* AboutUs.storyboard */; };
 		D3C1036A2A73D85C00A23C02 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */; };
@@ -36,9 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D30306572C1C82C2008B9AFB /* BookingCollectionViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCollectionViewManager.swift; sourceTree = "<group>"; };
 		D303FEBC2B7150EB0066CF56 /* BookingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableView.swift; sourceTree = "<group>"; };
 		D303FEBE2B73A2440066CF56 /* BookingTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingTableCell.swift; sourceTree = "<group>"; };
-		D3051E5E2AE938F900C8175E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D30EBDAB2B26144900AA790B /* HomeAutoSliderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAutoSliderModel.swift; sourceTree = "<group>"; };
 		D311BBE82B0E08E700B6CDC5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithShadow.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCollectionViewCell.xib; sourceTree = "<group>"; };
 		D38056B62B4486430075BDFB /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
-		D39A9F702B61497F00D9132F /* BookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingModel.swift; sourceTree = "<group>"; };
+		D39A9F702B61497F00D9132F /* BookingVCModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingVCModel.swift; sourceTree = "<group>"; };
 		D3ADFA292B3C2B700022E93B /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		D3C103672A73D63B00A23C02 /* AboutUs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutUs.storyboard; sourceTree = "<group>"; };
 		D3C103692A73D85C00A23C02 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		D30EBDAA2B26142000AA790B /* Home  */ = {
 			isa = PBXGroup;
 			children = (
-				D3051E5E2AE938F900C8175E /* HomeCollectionViewCell.swift */,
 				D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */,
 				D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */,
 				D303FEBC2B7150EB0066CF56 /* BookingTableView.swift */,
 				D303FEBE2B73A2440066CF56 /* BookingTableCell.swift */,
+				D30306572C1C82C2008B9AFB /* BookingCollectionViewManager.swift */,
 			);
 			path = "Home ";
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				D30EBDAB2B26144900AA790B /* HomeAutoSliderModel.swift */,
-				D39A9F702B61497F00D9132F /* BookingModel.swift */,
+				D39A9F702B61497F00D9132F /* BookingVCModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -295,11 +295,11 @@
 				D311BBE92B0E08E700B6CDC5 /* Colors.swift in Sources */,
 				D31CE1072B88ECA60048790C /* GiftVoucherViewController.swift in Sources */,
 				D364B74A2BADCFB800796845 /* ButtonWithShadow.swift in Sources */,
+				D30306582C1C82C2008B9AFB /* BookingCollectionViewManager.swift in Sources */,
 				D316F4CD2B5AC7EE00E2F60E /* BookingViewController.swift in Sources */,
-				D39A9F712B61497F00D9132F /* BookingModel.swift in Sources */,
+				D39A9F712B61497F00D9132F /* BookingVCModel.swift in Sources */,
 				D3302BA72B83C5240027D6AF /* LogoViewController.swift in Sources */,
 				D3C1036E2A73DACB00A23C02 /* AccountViewController.swift in Sources */,
-				D3051E5F2AE938F900C8175E /* HomeCollectionViewCell.swift in Sources */,
 				D3ADFA2A2B3C2B700022E93B /* View + Extension.swift in Sources */,
 				D303FEBF2B73A2440066CF56 /* BookingTableCell.swift in Sources */,
 				D348777129FEA9C000B23D6E /* AppDelegate.swift in Sources */,

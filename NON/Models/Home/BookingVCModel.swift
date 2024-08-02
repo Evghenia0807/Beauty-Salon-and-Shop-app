@@ -4,8 +4,73 @@
 //
 //  Created by Evghenia Nedbailova on 24/01/2024.
 //
+// Category (Nails,HairCut..)
+// Section (Manicure,Pedicure..)
+// Service (Gel polish ... price)
+
 
 import UIKit
+
+
+
+//MARK: Models
+
+enum BookingVCModel {
+    case collectionView(CollectionDataModel)
+    case tableView(Category)
+}
+
+
+struct CollectionDataModel: Hashable{
+    let image: UIImage?
+    let title: Category
+
+   static var sections: [Self] = [
+        .init(image: UIImage(named: "NailsSection"), title: Category.nails),
+        .init(image: UIImage(named: "FaceCareSection"), title: Category.faceCare),
+        .init(image: UIImage(named: "HairCutSection"), title: Category.hair),
+        .init(image: UIImage(named: "MassageSection"), title: Category.massage),
+        .init(image: UIImage(named: "LashesSection"), title: Category.lashes),
+        .init(image: UIImage(named: "CosmetologySection"), title: Category.cosmetology),
+        .init(image: UIImage(named: "MakeUpSection"), title: Category.cosmetology),
+        .init(image: UIImage(named: "PermanentSection"), title: Category.permanent)
+    ]
+}
+
+
+enum Category: String{
+    case nails = "Nails"
+    case hair = "Hair Cut"
+    case lashes = "Lashes"
+    case massage = "Massage"
+    case faceCare = "Face Care"
+    case cosmetology = "Cosmetology"
+    case makeUp = "MakeUp"
+    case permanent = "Permanent"
+}
+
+
+struct Sections{
+    let sectionName: String
+    let serviceNamePrice: [ServiceNamePrice]
+    }
+
+
+struct ServiceNamePrice{
+    let name: String
+    let price: String
+
+    init(name: String, price: Int) {
+        self.name = name
+        self.price = "\(price) AED"
+    }
+}
+
+
+
+
+
+
 
 
 
@@ -14,18 +79,18 @@ import UIKit
 struct BookingData{
     
     
-    func fill(object: BookingModel) -> [Sections]{
+    func fill(object: BookingVCModel) -> [Sections]{
         var array = [Sections]()
         
         switch object {
-            case .tableView(let service) where service == .nails : array = nailsData
-            case .tableView(let service) where service == .lashes : array = lashesData
-            case .tableView(let service) where service == .hair : array = hairData
-            case .tableView(let service) where service == .massage : array = massage
-            case .tableView(let service) where service == .faceCare : array = faceCare
-            case .tableView(let service) where service == .makeUp : array = makeUp
-            case .tableView(let service) where service == .permanent : array = permanent
-            case .tableView(let service) where service == .cosmetology : array = cosmetology
+            case .tableView(let category) where category == .nails : array = nailsData
+            case .tableView(let category) where category == .lashes : array = lashesData
+            case .tableView(let category) where category == .hair : array = hairData
+            case .tableView(let category) where category == .massage : array = massage
+            case .tableView(let category) where category == .faceCare : array = faceCare
+            case .tableView(let category) where category == .makeUp : array = makeUp
+            case .tableView(let category) where category == .permanent : array = permanent
+            case .tableView(let category) where category == .cosmetology : array = cosmetology
             default: break
         }
         return array
@@ -40,7 +105,7 @@ struct BookingData{
                                  .init(name: "+ Gel polish", price: +25),
                                  .init(name: "Ombre full set (Acrilyc/gel)", price: 250),
                                  .init(name: "Gel overlay", price: 200)]),
-        .init(sectionName: "Pedicure", 
+        .init(sectionName: "Pedicure",
               serviceNamePrice: [.init(name: "French Pedicure", price: 110),
                                  .init(name: "@Infill nail EXTENSIOextensionNS", price: 150),
                                  .init(name: "Classic Pedicure", price: 95),
@@ -194,63 +259,6 @@ struct BookingData{
                                  .init(name: "Slimming Massage", price: 360)])
     ]
 
-}
-
-
-
-
-
-//MARK: Models
-
-enum BookingModel {
-    case collectionView(CollectionDataModel)
-    case tableView(ServicesType)
-}
-
-
-struct CollectionDataModel: Hashable{
-    let image: UIImage?
-    let title: ServicesType
-
-   static var sections: [Self] = [
-        .init(image: UIImage(named: "NailsSection"), title: ServicesType.nails),
-        .init(image: UIImage(named: "FaceCareSection"), title: ServicesType.faceCare),
-        .init(image: UIImage(named: "HairCutSection"), title: ServicesType.hair),
-        .init(image: UIImage(named: "MassageSection"), title: ServicesType.massage),
-        .init(image: UIImage(named: "LashesSection"), title: ServicesType.lashes),
-        .init(image: UIImage(named: "CosmetologySection"), title: ServicesType.cosmetology),
-        .init(image: UIImage(named: "MakeUpSection"), title: ServicesType.cosmetology),
-        .init(image: UIImage(named: "PermanentSection"), title: ServicesType.permanent)
-    ]
-}
-
-
-enum ServicesType: String{
-    case nails = "Nails"
-    case hair = "Hair Cut"
-    case lashes = "Lashes"
-    case massage = "Massage"
-    case faceCare = "Face Care"
-    case cosmetology = "Cosmetology"
-    case makeUp = "MakeUp"
-    case permanent = "Permanent"
-}
-
-
-struct Sections{
-    let sectionName: String
-    let serviceNamePrice: [ServiceNamePrice]
-    }
-
-
-struct ServiceNamePrice{
-    let name: String
-    let price: String
-
-    init(name: String, price: Int) {
-        self.name = name
-        self.price = "\(price) AED"
-    }
 }
 
 

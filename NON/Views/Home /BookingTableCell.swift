@@ -9,35 +9,68 @@ import UIKit
 
 class BookingTableCell: UITableViewCell {
 
-    let indentifier = "BookingTableCell"
-    
-   
+   static let indentifier = "BookingTableCell"
+    let accessoryPlus = UIImageView(image: UIImage(systemName: "plus"))
     var serviceName = UILabel()
     var price = UILabel()
+    var serviceIsChosen: Bool = false {
+        didSet{
+            updateAccessoryView()
+        }
+    }
+   
     
-    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupCell()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupCell()
+    }
     
    
     func setupCell(){
-        
-        
-        addSubview(serviceName)
-        addSubview(price)
+
+        accessoryView = accessoryPlus
+        accessoryPlus.contentMode = .scaleAspectFit
+        accessoryPlus.isUserInteractionEnabled = true
         
         serviceName.translatesAutoresizingMaskIntoConstraints = false
         price.translatesAutoresizingMaskIntoConstraints = false
-        serviceName.topAnchor.constraint(equalTo: self.topAnchor,constant: 5).isActive = true
-        serviceName.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -5).isActive = true
-        serviceName.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 5).isActive = true
-        price.topAnchor.constraint(equalTo: self.topAnchor,constant: 5).isActive = true
-        price.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -5).isActive = true
-        price.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -5).isActive = true
         
-        self.backgroundColor = .black
+        contentView.addSubview(serviceName)
+        contentView.addSubview(price)
+        
+        activateConstraints()
+        updateAccessoryView()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(accessoryTapped))
+        accessoryPlus.addGestureRecognizer(tapGesture)
+        
+        backgroundColor = .black
         serviceName.textColor = .white
         price.textColor = UIColor(cgColor: Colors.subtitleColorPink)
-      
     }
     
+    func activateConstraints(){
+        NSLayoutConstraint.activate([
+            serviceName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            serviceName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            serviceName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            
+            price.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            price.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            price.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            
+        ])
+    }
     
+    func updateAccessoryView() {
+        accessoryPlus.tintColor = serviceIsChosen ? UIColor(cgColor: Colors.mainColorPink) : UIColor(cgColor: Colors.darkGray)
+    }
+    
+    @objc func accessoryTapped() {
+        serviceIsChosen.toggle()
+        }
 }
