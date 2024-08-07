@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import SwiftUI
 
 class GiftVoucherViewController: LogoViewController {
     
-  
-    
+    var hostingController: UIHostingController<GiftVoucherModalView>?
+    var isModalPresented: Bool = false
+
     @IBOutlet weak var giftVoucher: UIImageView!
-    
-    
     @IBOutlet weak var line1: UILabel!
     @IBOutlet weak var line2: UILabel!
     @IBOutlet weak var line3: UILabel!
@@ -22,14 +22,12 @@ class GiftVoucherViewController: LogoViewController {
     @IBOutlet weak var trailingConstrait3: NSLayoutConstraint!
     @IBOutlet weak var subtitleText: UILabel!
     var buyButton = ButtonWithShadow()
-    
-    
     var largeText: [UILabel] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        setupHostingController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +36,6 @@ class GiftVoucherViewController: LogoViewController {
         buyButtonSetup()
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 2.5) {
@@ -46,11 +43,51 @@ class GiftVoucherViewController: LogoViewController {
         }
     }
     
-   
-    
-    
+    private func setupHostingController() {
+        let modalView = GiftVoucherModalView(isPresented: Binding(
+                       get: { self.isModalPresented },
+                       set: { newValue in
+                           if newValue {
+                               self.isModalPresented = newValue
+                               self.hostingController?.view.isHidden = false
+                               self.hostingController?.view.alpha = 0.0
+                               UIView.animate(withDuration: 0.6, animations: {
+                                   self.hostingController?.view.alpha = 1.0
+                                   self.hostingController?.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+                               })
+                           } else {
+                               UIView.animate(withDuration: 0.6, animations: {
+                                   self.hostingController?.view.alpha = 0.0
+                               }, completion: { _ in
+                                   self.hostingController?.view.isHidden = true
+                                   self.isModalPresented = newValue
+                               })
+                           }
+                       }
+                   ))
+        hostingController = UIHostingController(rootView: modalView)
+        
+        if let hostingController = hostingController {
+            hostingController.view.backgroundColor = UIColor.black.withAlphaComponent(0.0)
+            hostingController.view.isHidden = true
+            addChild(hostingController)
+            view.addSubview(hostingController.view)
+            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
+                hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+            hostingController.didMove(toParent: self)
+        }
+    }
+  
     private func buyButtonSetup(){
-        buyButton = ButtonWithShadow(title: "Purchase", width: 200, height: 80,  goToIdentifier: HomeViewController.identifier)
+        buyButton = ButtonWithShadow(title: "Purchase", width: 200, height: 80, onTap: {
+            [weak self] in
+            self?.buyButtonTapped()
+        })
         view.addSubview(buyButton)
         buyButton.alpha = 0.4
         buyButton.translatesAutoresizingMaskIntoConstraints = false
@@ -62,28 +99,29 @@ class GiftVoucherViewController: LogoViewController {
             buyButton.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
         
-        let topConstrait = buyButton.topAnchor.constraint(equalTo: subtitleText.bottomAnchor, constant: 20)
-        topConstrait.priority = UILayoutPriority(850)
+        let topConstraint = buyButton.topAnchor.constraint(equalTo: subtitleText.bottomAnchor, constant: 20)
+        topConstraint.priority = UILayoutPriority(850)
         
-        let bottomConstrait = buyButton.bottomAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.bottomAnchor, constant: -75)
-        bottomConstrait.priority = UILayoutPriority(860)
+        let bottomConstraint = buyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -75)
+        bottomConstraint.priority = UILayoutPriority(860)
         
-        let heightContraint =  buyButton.heightAnchor.constraint(equalToConstant: 60)
-        heightContraint.priority = UILayoutPriority(950)
+        let heightConstraint = buyButton.heightAnchor.constraint(equalToConstant: 60)
+        heightConstraint.priority = UILayoutPriority(950)
         
-        NSLayoutConstraint.activate([
-            topConstrait,
-            bottomConstrait,
-            heightContraint
-        ])
-        
-       
+        NSLayoutConstraint.activate([topConstraint, bottomConstraint, heightConstraint])
     }
     
+    private func buyButtonTapped() {
+        isModalPresented = true
+        hostingController?.view.isHidden = false
+        hostingController?.view.alpha = 0.0
+        UIView.animate(withDuration: 0.6, animations: {
+            self.hostingController?.view.alpha = 1.0
+            self.hostingController?.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        })
+    }
     
-    
-    private func initialSetup(){
-        
+    private func initialSetup() {
         largeText.append(line1)
         largeText.append(line2)
         largeText.append(line3)
@@ -95,9 +133,7 @@ class GiftVoucherViewController: LogoViewController {
         subtitleText.adjustsFontSizeToFitWidth = true
     }
     
-    
-    private func animateSetup(){
-        
+    private func animateSetup() {
         UIView.animate(withDuration: 2) {
             for line in self.largeText {
                 line.textAlignment = .right
@@ -111,7 +147,4 @@ class GiftVoucherViewController: LogoViewController {
             self.subtitleText.alpha = 1
         }
     }
-   
-
 }
-
