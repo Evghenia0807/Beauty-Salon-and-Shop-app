@@ -36,15 +36,15 @@ class BookingCollectionViewCell: UICollectionViewCell {
     
     func selectedBookingCell(index: IndexPath){
         fillBookingCell(index: index)
-        conteinerView.dropShadow(color: Colors.mainColorPink, opacity: 0.12, radius: 2)
-        cellPic.layer.borderColor = Colors.mainColorPink
+        conteinerView.dropShadow(color: Colors.CGColorType.mainColorPink.value, opacity: 0.12, radius: 2)
+        cellPic.layer.borderColor = Colors.CGColorType.mainColorPink.value
         cellPic.layer.borderWidth = 0.25
     }
     
     func deselectedBookingCell(index: IndexPath){
         fillBookingCell(index: index)
-        conteinerView.dropShadow(color: Colors.subtitleColorPink, opacity: 0.12, radius: 2)
-        cellPic.layer.borderColor = Colors.subtitleColorPink
+        conteinerView.dropShadow(color: Colors.CGColorType.subtitleColorPink.value, opacity: 0.12, radius: 2)
+        cellPic.layer.borderColor = Colors.CGColorType.subtitleColorPink.value
         cellPic.layer.borderWidth = 0.17
     }
 }
@@ -54,42 +54,3 @@ class BookingCollectionViewCell: UICollectionViewCell {
 
 
 
-
-
-
-//import UIKit
-//
-//
-//
-//class BookingCollectionViewCell: UICollectionViewCell {
-//    
-//    static let identifier = String(describing: BookingCollectionViewCell.self)
-//    
-//
-//    @IBOutlet weak var cellPic: UIImageView!
-//    @IBOutlet weak var conteinerView: UIView!
-//
-//    
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//    
-//  
-//       
-//    
-//    func fillBookingCell(index: Int){
-//    
-//        conteinerView.frame = self.bounds
-//        conteinerView.layer.cornerRadius = 10
-//        conteinerView.dropShadow(color: Colors.subtitleColorPink, opacity: 0.12, radius: 2)
-//        cellPic.layer.borderColor = Colors.subtitleColorPink
-//        cellPic.layer.borderWidth = 0.17
-//        cellPic.layer.cornerRadius = 10
-//        cellPic.image = CollectionDataModel.sections[index].image
-//    
-//    }
-//
-//
-//}
-//

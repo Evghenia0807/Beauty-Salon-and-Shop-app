@@ -10,40 +10,72 @@ import UIKit
 class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     
-    let bookingCell = BookingTableCell()
-    let Data = BookingData()
-    var service = ServicesType.nails
+    let data = BookingData()
+    var currentCategory = Category.nails
     
-    
+    init() {
+            super.init(frame: .zero, style: .plain)
+            setupTableView()
+        }
 
+        required init?(coder: NSCoder) {
+            super.init(coder: coder)
+            setupTableView()
+        }
+
+        private func setupTableView() {
+            self.register(BookingTableCell.self, forCellReuseIdentifier: "BookingTableCell")
+            self.delegate = self
+            self.dataSource = self
+        }
+
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        Data.fill(object: .tableView(service)).count
+        data.fill(object: .tableView(currentCategory)).count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Data.fill(object: .tableView(service))[section].serviceNamePrice.count
+        data.fill(object: .tableView(currentCategory))[section].serviceNamePrice.count
         
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        Data.fill(object: .tableView(service))[section].sectionName
+        data.fill(object: .tableView(currentCategory))[section].sectionName
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(BookingTableCell.self,
-                                 forCellReuseIdentifier: "BookingTableCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookingTableCell", for: indexPath) as! BookingTableCell
-        cell.setupCell()
-        cell.serviceName.text = Data.fill(object: .tableView(service))[indexPath.section].serviceNamePrice[indexPath.row].name
-        cell.price.text = Data.fill(object: .tableView(service))[indexPath.section].serviceNamePrice[indexPath.row].price
+        let section = data.fill(object: .tableView(currentCategory))[indexPath.section]
+        let service = section.serviceNamePrice[indexPath.row]
+                
+                cell.serviceName.text = service.name
+        cell.price.text = service.priceString
+                cell.category = currentCategory
+                cell.section = section
+                cell.service = service
+                
+                cell.serviceIsChosen = Cart.shared.isSelected(category: currentCategory, service: service)
+                
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.backgroundColor = Colors.UIColorType.almostBlack.value
         tableView.deselectRow(at: indexPath, animated: true)
+        let category = data.fill(object: .tableView(currentCategory))[indexPath.section]
+        let service = category.serviceNamePrice[indexPath.row]
+
+                
+                Cart.shared.updateCart(category: currentCategory, service: service)
+
+                
+                tableView.reloadData()
     }
     
-  
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        40
+    }
+    
 }
 
 
