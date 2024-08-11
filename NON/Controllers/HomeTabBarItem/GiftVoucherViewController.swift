@@ -1,9 +1,9 @@
 //
 //  GiftVoucherViewController.swift
 //  NON
-//
 //  Created by Evghenia Nedbailova on 23/02/2024.
-//
+
+
 
 import UIKit
 import SwiftUI
@@ -27,20 +27,25 @@ class GiftVoucherViewController: LogoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        animateSetup()
-        buyButtonSetup()
         setupHostingController()
+        isModalPresented = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 2.5) {
             self.buyButton.alpha = 1
+            self.presentModalView()
         }
+    }
+    
+    private func presentModalView() {
+        hostingController?.view.isHidden = false
+        hostingController?.view.alpha = 0.0
+        UIView.animate(withDuration: 0.6, animations: {
+            self.hostingController?.view.alpha = 1.0
+            self.hostingController?.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        })
     }
     
     private func setupHostingController() {
