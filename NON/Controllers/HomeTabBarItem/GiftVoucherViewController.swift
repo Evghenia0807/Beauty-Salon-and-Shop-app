@@ -27,13 +27,13 @@ class GiftVoucherViewController: LogoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        setupHostingController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateSetup()
         buyButtonSetup()
+        setupHostingController()
     }
     
     override func viewDidAppear(_ animated: Bool) {

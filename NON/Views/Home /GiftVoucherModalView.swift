@@ -7,39 +7,59 @@
 
 import SwiftUI
 
-
 struct GiftVoucherModalView: View {
     @Binding var isPresented: Bool
     @State private var amount: Int = 500
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.5)
+            // Темный градиент заднего фона с эффектом bloom
+            LinearGradient(gradient: Gradient(colors: [Color.black, Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
                 .overlay(
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                isPresented = false
-                            }) {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(.white)
-                                    .padding()
-                            }
-                        }
-                        Spacer()
+                    // Bloom effect в виде цветовых круглых пятен
+                    ZStack {
+                        Circle()
+                            .fill(Color.purple.opacity(0.4))
+                            .frame(width: 300, height: 300)
+                            .offset(x: -150, y: -250)
+                            .blur(radius: 100)
+                        
+                        Circle()
+                            .fill(Color.blue.opacity(0.3))
+                            .frame(width: 250, height: 250)
+                            .offset(x: 150, y: 150)
+                            .blur(radius: 80)
+                        
+                        Circle()
+                            .fill(Colors.SwiftUIColorType.mainColorPink.value.opacity(0.5))
+                            .frame(width: 200, height: 200)
+                            .offset(x: -200, y: 300)
+                            .blur(radius: 100)
                     }
                 )
             
             VStack(spacing: 20) {
-                Text("Enter Amount for Gift Voucher")
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isPresented = false
+                    }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                }
+                
+                Spacer()
+                
+                Text("Enter Amount")
                     .font(.title)
                     .foregroundColor(.white)
                 
                 Text("Minimum amount: 500 AED")
                     .font(.subheadline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
                 
                 HStack {
                     Button(action: {
@@ -52,9 +72,9 @@ struct GiftVoucherModalView: View {
                             .font(.largeTitle)
                     }
                     
-                    Text("\(amount) AED")
+                    Text("\(amount) aed")
                         .font(.largeTitle)
-                        .foregroundColor(.white)
+                        .foregroundColor(.blue)
                     
                     Button(action: {
                         amount += 50
@@ -74,13 +94,20 @@ struct GiftVoucherModalView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                 }
+                
+                Spacer()
             }
             .padding()
             .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(#colorLiteral(red: 0.831372549, green: 0.09411764706, blue: 0.462745098, alpha: 1)).opacity(0.8))
+                // Полупрозрачный фон с лёгким цветовым градиентом
+                LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.09935290366, green: 0.09935290366, blue: 0.09935290366, alpha: 1)).opacity(0.3), Color(#colorLiteral(red: 0.2444417477, green: 0.003845657455, blue: 0.9699226022, alpha: 1)).opacity(0.2), Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)).opacity(0.2)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .background(Color.white.opacity(0.1))
+                    .cornerRadius(20)
+                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+                    .blur(radius: 1)
             )
-            .padding(40)
+            .padding(.horizontal,50)
+            .padding(.vertical,170)
             .transition(.opacity)
         }
     }
