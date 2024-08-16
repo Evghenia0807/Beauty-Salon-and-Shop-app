@@ -23,6 +23,7 @@
 		D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */; };
 		D3629B382B5AE05C0007840B /* BookingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */; };
 		D364B74A2BADCFB800796845 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315B7A52B3F0F5B00365FC0 /* ButtonWithShadow.swift */; };
+		D37C2FFC2C5FA4E200EDD483 /* GiftVoucherModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C2FFB2C5FA4E200EDD483 /* GiftVoucherModalView.swift */; };
 		D38056B72B4486430075BDFB /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38056B62B4486430075BDFB /* ShoppingViewController.swift */; };
 		D38849562C2344240051C63A /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38849552C2344240051C63A /* NotificationCenter.swift */; };
 		D38A60062C4D1E07000ED32F /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A60052C4D1E07000ED32F /* CartModel.swift */; };
@@ -61,6 +62,7 @@
 		D35595A02A20E1DF00B3756F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3629B352B5AE05C0007840B /* BookingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3629B362B5AE05C0007840B /* BookingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookingCollectionViewCell.xib; sourceTree = "<group>"; };
+		D37C2FFB2C5FA4E200EDD483 /* GiftVoucherModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftVoucherModalView.swift; sourceTree = "<group>"; };
 		D38056B62B4486430075BDFB /* ShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		D38849552C2344240051C63A /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		D38A60052C4D1E07000ED32F /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				D303FEBC2B7150EB0066CF56 /* BookingTableView.swift */,
 				D303FEBE2B73A2440066CF56 /* BookingTableCell.swift */,
 				D30306572C1C82C2008B9AFB /* BookingCollectionViewManager.swift */,
+				D37C2FFB2C5FA4E200EDD483 /* GiftVoucherModalView.swift */,
 			);
 			path = "Home ";
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				D303FEBF2B73A2440066CF56 /* BookingTableCell.swift in Sources */,
 				D348777129FEA9C000B23D6E /* AppDelegate.swift in Sources */,
 				D348777329FEA9C000B23D6E /* SceneDelegate.swift in Sources */,
+				D37C2FFC2C5FA4E200EDD483 /* GiftVoucherModalView.swift in Sources */,
 				D38D70172C45905600299BE1 /* CartView.swift in Sources */,
 				D3224C792B20C831006B3007 /* Logo.swift in Sources */,
 				D3629B372B5AE05C0007840B /* BookingCollectionViewCell.swift in Sources */,
