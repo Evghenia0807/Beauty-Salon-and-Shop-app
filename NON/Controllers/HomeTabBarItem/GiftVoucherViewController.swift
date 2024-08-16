@@ -12,7 +12,7 @@ class GiftVoucherViewController: LogoViewController {
     
     var hostingController: UIHostingController<GiftVoucherModalView>?
     var isModalPresented: Bool = false
-
+    
     @IBOutlet weak var giftVoucher: UIImageView!
     @IBOutlet weak var line1: UILabel!
     @IBOutlet weak var line2: UILabel!
@@ -24,16 +24,18 @@ class GiftVoucherViewController: LogoViewController {
     var buyButton = ButtonWithShadow()
     var largeText: [UILabel] = []
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        setupHostingController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateSetup()
         buyButtonSetup()
+        setupHostingController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +44,8 @@ class GiftVoucherViewController: LogoViewController {
             self.buyButton.alpha = 1
         }
     }
+    
+    
     
     private func setupHostingController() {
         let modalView = GiftVoucherModalView(isPresented: Binding(
@@ -110,6 +114,7 @@ class GiftVoucherViewController: LogoViewController {
         
         NSLayoutConstraint.activate([topConstraint, bottomConstraint, heightConstraint])
     }
+    
     
     private func buyButtonTapped() {
         isModalPresented = true

@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-
 struct GiftVoucherModalView: View {
     @Binding var isPresented: Bool
     @State private var amount: Int = 500
+    @State private var isDeliverySelected: Bool = false
     
     var body: some View {
         ZStack {
@@ -32,14 +32,15 @@ struct GiftVoucherModalView: View {
                     }
                 )
             
-            VStack(spacing: 20) {
-                Text("Enter Amount for Gift Voucher")
+            VStack {
+                Text("Enter Amount")
                     .font(.title)
-                    .foregroundColor(.white)
+                    .foregroundColor(Colors.SwiftUIColorType.subtitleColorPink.value)
                 
                 Text("Minimum amount: 500 AED")
                     .font(.subheadline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
+                  
                 
                 HStack {
                     Button(action: {
@@ -48,11 +49,11 @@ struct GiftVoucherModalView: View {
                         }
                     }) {
                         Image(systemName: "minus.circle")
-                            .foregroundColor(.white)
+                            .foregroundColor(Colors.SwiftUIColorType.lightCyan.value.opacity(0.9))
                             .font(.largeTitle)
                     }
                     
-                    Text("\(amount) AED")
+                    Text("\(amount) aed")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                     
@@ -60,22 +61,44 @@ struct GiftVoucherModalView: View {
                         amount += 50
                     }) {
                         Image(systemName: "plus.circle")
-                            .foregroundColor(.white)
+                            .foregroundColor(Colors.SwiftUIColorType.lightCyan.value)
                             .font(.largeTitle)
+                    }
+                }
+                .padding()
+                
+                HStack {
+                    Text("Include Delivery")
+                        .foregroundColor(Colors.SwiftUIColorType.lightCyan.value)
+                        .padding(.trailing)
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(isDeliverySelected ? Colors.SwiftUIColorType.darkCyan.value : Colors.SwiftUIColorType.darkGray.value.opacity(0.6))
+                            .frame(width: 50, height: 31)
+                        Toggle(isOn: $isDeliverySelected) {
+                            EmptyView()
+                        }
+                        .toggleStyle(SwitchToggleStyle(tint: Colors.SwiftUIColorType.darkCyan.value))
+                        .labelsHidden()
                     }
                 }
                 
                 Button(action: {
-                    // Добавить в корзину действие
+                    isPresented = false
                 }) {
                     Text("Add to Cart")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
+                        .foregroundColor(Colors.SwiftUIColorType.mainColorPink.value)
+                        .padding(.horizontal,30)
+                        .padding(.vertical,20)
+                        .background(Color.black)
                         .cornerRadius(10)
                 }
+                .shadow(color: .black.opacity(0.6), radius: 2)
             }
-            .padding()
+            .padding(30)
+            .padding(.top,40)
+            .padding(.bottom,40)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color(#colorLiteral(red: 0.831372549, green: 0.09411764706, blue: 0.462745098, alpha: 1)).opacity(0.8))
