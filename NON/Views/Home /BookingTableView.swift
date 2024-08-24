@@ -66,7 +66,7 @@ class BookingTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         let service = category.serviceNamePrice[indexPath.row]
 
                 
-                Cart.shared.updateCart(category: currentCategory, service: service)
+                Cart.shared.manageSalonServices(category: currentCategory, service: service)
 
                 
                 tableView.reloadData()
