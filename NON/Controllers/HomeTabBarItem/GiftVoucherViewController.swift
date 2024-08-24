@@ -1,16 +1,16 @@
 //
 //  GiftVoucherViewController.swift
 //  NON
-//
 //  Created by Evghenia Nedbailova on 23/02/2024.
-//
+
+
 
 import UIKit
 import SwiftUI
 
 class GiftVoucherViewController: LogoViewController {
     
-    var hostingController: UIHostingController<GiftVoucherModalView>?
+    var hostingController: UIHostingController<GiftVoucherOptionsView>?
     var isModalPresented: Bool = false
     
     @IBOutlet weak var giftVoucher: UIImageView!
@@ -48,7 +48,7 @@ class GiftVoucherViewController: LogoViewController {
     
     
     private func setupHostingController() {
-        let modalView = GiftVoucherModalView(isPresented: Binding(
+        let modalView = GiftVoucherOptionsView(isPresented: Binding(
                        get: { self.isModalPresented },
                        set: { newValue in
                            if newValue {
