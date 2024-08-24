@@ -17,7 +17,7 @@ struct CartSummaryView: View {
                     .foregroundColor(.white)
                     .font(.system(size: 15))
                 Spacer()
-                Text("\(Double(viewModel.totalWithoutDiscount), specifier: "%.2f") AED")
+                Text("\(Double(viewModel.subtotal), specifier: "%.2f") AED")
                     .foregroundColor(.white)
                     .font(.system(size: 15))
             }
@@ -28,22 +28,20 @@ struct CartSummaryView: View {
                         .foregroundColor(.white)
                         .font(.system(size: 15))
                     Spacer()
-                    Text("-\(Double(viewModel.totalWithoutDiscount) * viewModel.discount / 100, specifier: "%.2f") AED")
+                    Text("-\(Double(viewModel.subtotal) * viewModel.discount / 100, specifier: "%.2f") AED")
                         .foregroundColor(.white)
                         .font(.system(size: 15))
                 }
             }
             
-            if viewModel.hasDeliveryItems {
-                HStack {
-                    Text("Delivery Fee:")
-                        .foregroundColor(.white)
-                        .font(.system(size: 15))
-                    Spacer()
-                    Text("\(viewModel.deliveryFee, specifier: "%.2f") AED")
-                        .foregroundColor(.white)
-                        .font(.system(size: 15))
-                }
+            HStack {
+                Text("Delivery Fee:")
+                    .foregroundColor(.white)
+                    .font(.system(size: 15))
+                Spacer()
+                Text("0.00 AED")
+                    .foregroundColor(.white)
+                    .font(.system(size: 15))
             }
 
             HStack {
@@ -65,7 +63,7 @@ struct CartSummaryView: View {
                 Text("\(Double(viewModel.finalTotal), specifier: "%.2f") AED")
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .font(.system(size: 18)) 
+                    .font(.system(size: 18))
             }
         }
         .padding()
@@ -73,4 +71,3 @@ struct CartSummaryView: View {
         .cornerRadius(10)
     }
 }
-

@@ -128,7 +128,7 @@ struct OrderDisplayView: View {
     }
 
     private func removeService(category: Category, service: ServiceNamePrice) {
-        Cart.shared.updateCart(category: category, service: service)
+        Cart.shared.manageSalonServices(category: category, service: service)
         localServices.removeAll { $0.1.name == service.name }
         if localServices.isEmpty {
             isExpanded = false

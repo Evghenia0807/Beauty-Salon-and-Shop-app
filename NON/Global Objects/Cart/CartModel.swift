@@ -10,50 +10,65 @@ import SwiftUI
 import Combine
 
 class CartModel: ObservableObject {
-    @Published var totalWithoutDiscount = 0
+    @Published var subtotal = 0
     @Published var finalTotal = 0.0
+    @Published var giftVouchersTotal = 0
+    @Published var giftVouchersCount = 0
+    @Published var shopProductsTotal = 0
+    @Published var shopProductsCount = 0
     @Published var promoCode: String = ""
     @Published var discount: Double = 0.0
     var deliveryFee: Double = 0
     let taxRate: Double = 5.0
 
     private var cancellables = Set<AnyCancellable>()
-    
+
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(cartDidUpdate), name: .cartDidUpdate, object: nil)
-        calculateTotalNoDiscount()
+        calculateAllTotalsAndCounts()
         calculateFinalTotal()
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: .cartDidUpdate, object: nil)
     }
-    
+
     @objc private func cartDidUpdate() {
-        calculateTotalNoDiscount()
+        calculateAllTotalsAndCounts()
         calculateFinalTotal()
     }
-    
-    func calculateTotalNoDiscount() {
-        let total = Cart.shared.chosenSalonServices.flatMap{$0.value}.compactMap{$0.price}.reduce(0,+)
-        totalWithoutDiscount = total
+
+    func calculateAllTotalsAndCounts() {
+        let servicesTotal = Cart.shared.chosenSalonServices.flatMap { $0.value }.compactMap { $0.price }.reduce(0, +)
+        let itemsTotal = Cart.shared.chosenItems.compactMap { $0.price }.reduce(0, +)
+        subtotal = servicesTotal + itemsTotal
+
+        let giftVoucherResult = calculateTotalsAndCount(for: GiftVoucher.self)
+        giftVouchersTotal = giftVoucherResult.total
+        giftVouchersCount = giftVoucherResult.count
+
+        let shopProductResult = calculateTotalsAndCount(for: ShopProduct.self)
+        shopProductsTotal = shopProductResult.total
+        shopProductsCount = shopProductResult.count
     }
-    
+
     func calculateFinalTotal() {
-        let subtotal = Double(totalWithoutDiscount)
+        let subtotal = Double(self.subtotal)
         let discountAmount = subtotal * discount / 100
-        let delivery = hasDeliveryItems ? 20.0 : 0
         let tax = (subtotal - discountAmount) * taxRate / 100
-        let total = subtotal - discountAmount + delivery + tax
+        let total = subtotal - discountAmount + tax
         finalTotal = total
     }
 
-    var hasDeliveryItems: Bool {
-        !Cart.shared.chosenGiftVoucher.isEmpty || !Cart.shared.chosenShopProducts.isEmpty
+    func calculateTotalsAndCount<T: CartItem>(for itemType: T.Type) -> (total: Int, count: Int) {
+        let filteredItems = Cart.shared.chosenItems.compactMap { $0 as? T }
+        let total = filteredItems.compactMap { $0.price }.reduce(0, +)
+        let count = filteredItems.count
+        return (total, count)
     }
 
     var taxAmount: Double {
-        (Double(totalWithoutDiscount) - Double(totalWithoutDiscount) * discount / 100) * taxRate / 100
+        (Double(subtotal) - Double(subtotal) * discount / 100) * taxRate / 100
     }
 
     func applyPromoCode() {
@@ -64,8 +79,11 @@ class CartModel: ObservableObject {
         }
         calculateFinalTotal()
     }
-    
+
     func checkout() {
         print("Checkout with total: \(finalTotal) AED")
     }
 }
+
+
+
