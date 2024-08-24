@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GiftVoucherModalView: View {
+struct GiftVoucherOptionsView: View {
     @Binding var isPresented: Bool
     @State private var amount: Int = 500
     @State private var isDeliverySelected: Bool = false
@@ -41,7 +41,6 @@ struct GiftVoucherModalView: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
                   
-                
                 HStack {
                     Button(action: {
                         if amount > 500 {
@@ -85,6 +84,7 @@ struct GiftVoucherModalView: View {
                 }
                 
                 Button(action: {
+                    Cart.shared.addItem(GiftVoucher(delivery: isDeliverySelected, price: amount))
                     isPresented = false
                 }) {
                     Text("Add to Cart")
