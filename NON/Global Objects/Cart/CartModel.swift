@@ -9,6 +9,36 @@
 import SwiftUI
 import Combine
 
+struct ShopProduct: CartItem, Codable {
+    let id: UUID
+    let displayName: String
+    let price: Int
+    let imageName: String
+    var amount: Int
+    var delivery: Bool
+    var image: UIImage? {
+        return UIImage(named: imageName)
+    }
+}
+
+struct GiftVoucher: CartItem, Codable {
+    var id: UUID = UUID()
+    let delivery: Bool
+    let price: Int
+    var amount: Int {
+        return 1
+    }
+    var displayName: String {
+        return "Gift Voucher"
+    }
+    var imageName: String {
+        return "Gift Voucher"
+    }
+    var image: UIImage? {
+            return UIImage(named: imageName)
+        }
+}
+
 class CartModel: ObservableObject {
     @Published var subtotal = 0
     @Published var finalTotal = 0.0
